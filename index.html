@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15264d">
+  <meta name="description" content="Olympiad Proof Clinic — practice reasoning, review proof writing, and explore mathematical ideas.">
+  <title>Olympiad Proof Clinic — Interactive Demo</title>
+  <style>
+:root{--navy:#152449;--navy2:#202f5e;--ink:#15254b;--muted:#67738b;--line:#e5e9f2;--bg:#f6f8fc;--paper:#fff;--violet:#6854e8;--blue:#3d68e6;--teal:#0e9c93;--amber:#eca73d;--coral:#ee686d;--shadow:0 14px 42px rgba(30,46,96,.075);--r:20px;--sidebar:248px}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #8c91ff;outline-offset:3px}button:disabled{opacity:.45;cursor:not-allowed}a{color:inherit;text-decoration:none}.serif{font-family:Georgia,"Times New Roman",Songti SC,serif}svg{display:block}.i{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}.i.tiny{width:15px;height:15px}.i.big{width:23px;height:23px}
+.shell{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);height:100dvh;min-height:600px}.sidebar{display:flex;flex-direction:column;gap:0;padding:26px 14px 20px;background:linear-gradient(158deg,#142247 0%,#1d305f 67%,#172549 100%);color:#f5f7ff;position:relative;z-index:20;overflow:auto;scrollbar-width:thin;scrollbar-color:#58658c transparent}.sidebar:after{content:"";position:fixed;width:300px;height:150px;left:-75px;bottom:-95px;border-radius:50%;border:1px solid rgba(154,161,255,.2);pointer-events:none;transform:rotate(-15deg)}.brand{display:flex;align-items:center;gap:12px;padding:5px 8px 28px}.brand-mark{width:44px;height:44px;display:grid;place-items:center;flex-shrink:0;border-radius:13px;background:linear-gradient(145deg,#7e74ff 0%,#a5defb 58%,#ffbd83 100%);box-shadow:0 8px 30px #3b5dca44;font:italic 31px Georgia,serif;color:#19264d}.brand-name{font:700 18px/1.12 Georgia,serif;letter-spacing:-.35px}.brand-name span{display:block}.brand-sub{margin-top:5px;letter-spacing:1.6px;color:#a9bcf3;font-size:10px}.nav-list{display:grid;gap:5px}.nav{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:#d9e2fc;text-align:left;font-weight:560;font-size:13px;padding:12px 13px;border-radius:11px;transition:background .2s,transform .2s,color .2s}.nav .i{width:19px;height:19px}.nav:hover{background:#ffffff18;transform:translateX(2px);color:white}.nav.active{background:linear-gradient(90deg,#475ca1 0%,#354981 100%);color:#fff;box-shadow:inset 3px 0 #b3a8ff}.side-rule{height:1px;background:#ffffff26;margin:17px 9px}.side-label{padding:4px 13px 8px;color:#91a7d9;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.7px}.side-details{padding:0 9px}.side-details summary{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:12px;font-weight:650;padding:10px 5px;color:#e1e8ff;list-style:none;cursor:pointer}.side-details summary::-webkit-details-marker{display:none}.side-details .sub-link{display:flex;width:100%;border:0;border-radius:8px;background:none;color:#c4d1f0;text-align:left;padding:8px 10px 8px 14px;font-size:11.5px}.side-details .sub-link:hover{background:#ffffff15;color:white}.dot{display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:100%}.side-footer{margin-top:auto;padding:25px 7px 0}.lang-pill{background:#ffffff20;padding:4px;border-radius:99px;display:flex;gap:3px}.lang-pill button{flex:1;background:transparent;border:0;border-radius:99px;color:#e5eafd;padding:9px 4px;font-weight:700;font-size:12px;transition:background .2s}.lang-pill button.selected{background:#fff;color:var(--navy);box-shadow:0 3px 10px #0002}.side-note{font-size:10px;color:#9fb0d8;text-align:center;margin-top:11px;line-height:1.4}
+.main{min-width:0;height:100dvh;overflow-y:auto;scroll-behavior:smooth;scrollbar-color:#c5cce0 transparent;position:relative}.main.home-scroll{scroll-snap-type:y proximity}.section-snap{scroll-snap-align:start;scroll-snap-stop:normal}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:68px;padding:0 clamp(20px,3vw,50px);border-bottom:1px solid var(--line);background:#fffdfde9;backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}.crumb{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}.crumb strong{font-weight:750;color:var(--ink)}.top-actions{display:flex;align-items:center;gap:9px}.tiny-label{border:1px solid #e4e6f3;color:#667393;border-radius:100px;padding:6px 11px;font-size:10px;font-weight:800;letter-spacing:1.1px}.chip-neutral{color:#6556a8;border:1px solid #e3defc;background:#f4f1ff;border-radius:20px;padding:7px 10px;font-weight:700;font-size:11px}.menu-toggle{display:none;border:0;background:none;color:var(--ink);padding:8px}.body-padding{padding:clamp(24px,3vw,46px);max-width:1480px;margin:0 auto}.hero-panel{position:relative;min-height:calc(100dvh - 68px);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(25px,4vw,60px) clamp(22px,4vw,60px) 32px;overflow:hidden;background:radial-gradient(circle at 97% 5%,rgba(232,223,255,.68),transparent 31%),radial-gradient(circle at 73% 55%,rgba(205,237,250,.43),transparent 42%),#fff}.hero-panel:after{content:"";position:absolute;width:340px;height:340px;right:-145px;top:32%;background:radial-gradient(circle,rgba(247,206,154,.22),transparent 70%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.08fr 1fr;gap:12px;min-height:360px;align-items:center;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#5e57d1;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800}.eyebrow:before{content:"";display:inline-block;width:22px;height:3px;border-radius:4px;background:var(--amber)}h1,h2,h3,p{margin-top:0}.hero-title{font:700 clamp(49px,5.5vw,88px)/1.01 Georgia,"Songti SC",serif;letter-spacing:-3.2px;margin:23px 0 20px;max-width:760px}.hero-title .accent{color:var(--violet)}.hero-zh{font-size:clamp(46px,5vw,76px);letter-spacing:-1.3px}.hero-intro{font-size:clamp(14px,1.25vw,17px);line-height:1.72;color:var(--muted);max-width:490px;margin-bottom:26px}.cta-row{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;border:1px solid transparent;font-size:13px;font-weight:750;transition:transform .18s,box-shadow .18s,background .18s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:linear-gradient(118deg,#6558e7,#2d49b3);color:white;box-shadow:0 9px 25px rgba(79,79,206,.23)}.btn-primary:hover{box-shadow:0 14px 30px rgba(79,79,206,.28)}.btn-outline{color:#293b77;background:white;border-color:#cfd8eb}.btn-outline:hover{background:#f3f5fc}.btn-small{padding:9px 12px;font-size:11px}.math-canvas{height:390px;max-width:650px;width:100%;position:relative;justify-self:end;display:grid;place-items:center;touch-action:pan-y}.math-canvas::before{content:"";position:absolute;inset:11% 0 0 8%;background-image:linear-gradient(#6c8bb516 1px,transparent 1px),linear-gradient(90deg,#6c8bb516 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse,black 30%,transparent 76%)}.math-canvas svg{position:relative;width:min(100%,540px);filter:drop-shadow(0 16px 45px rgba(75,98,170,.12))}.math-node{cursor:crosshair;transform-box:fill-box;transform-origin:center;transition:filter .2s,transform .2s}.math-node:hover,.math-node.focused{filter:drop-shadow(0 0 11px #725cf2);transform:scale(1.35)}.math-tip{position:absolute;right:5%;top:9%;font:italic 16px Georgia,serif;background:#ffffffd7;border:1px solid #e3e5f0;border-radius:10px;padding:9px 13px;color:#374b98;box-shadow:var(--shadow);pointer-events:none}.math-bottom-label{position:absolute;bottom:10px;right:8%;font-size:11px;letter-spacing:.8px;color:#9ba5c5}.scroll-cue{margin:14px auto 0;display:grid;justify-items:center;gap:5px;border:0;background:none;color:#919bb1;font-size:10px;letter-spacing:1.5px;text-transform:uppercase}.scroll-cue .i{animation:gentle-bob 2s infinite}.feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:20px;position:relative;z-index:1}.feature-card{min-height:162px;border:1px solid #e9e8f3;border-radius:16px;text-align:left;padding:20px 19px;background:linear-gradient(155deg,#f3f1ff,#fff);color:var(--ink);position:relative;overflow:hidden;transition:transform .2s,border .2s,box-shadow .2s}.feature-card:hover,.topic-card:hover,.library-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#cfd0ed}.feature-card:after{content:"";height:3px;width:48px;border-radius:4px;position:absolute;bottom:0;left:19px;background:var(--violet)}.feature-card.teal{background:linear-gradient(145deg,#e9f9f6,#fff)}.feature-card.teal:after{background:var(--teal)}.feature-card.coral{background:linear-gradient(145deg,#fff0f0,#fff)}.feature-card.coral:after{background:var(--coral)}.feature-card.amber{background:linear-gradient(145deg,#fff5e8,#fff)}.feature-card.amber:after{background:var(--amber)}.feature-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:#e5e2ff;color:#6351e0;margin-bottom:15px}.feature-card.teal .feature-icon{background:#d9f4ee;color:#078e7e}.feature-card.coral .feature-icon{background:#ffe2e3;color:#e45b65}.feature-card.amber .feature-icon{background:#fff0d7;color:#d79222}.feature-card h3{font:700 18px Georgia,"Songti SC",serif;margin-bottom:6px}.feature-card p{font-size:12px;line-height:1.55;color:var(--muted);margin:0}.feature-card .card-arrow{position:absolute;right:16px;top:20px;color:#a8aec5}.home-section{padding:clamp(44px,6vw,84px) clamp(22px,4vw,60px);min-height:calc(100dvh - 68px)}.section-kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#6a63b9;margin-bottom:12px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:28px}.section-title{font:700 clamp(30px,3vw,43px) Georgia,"Songti SC",serif;letter-spacing:-1px;margin:0 0 8px}.section-desc{color:var(--muted);font-size:13px;max-width:620px;line-height:1.7}.topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.topic-card{border:1px solid var(--line);border-radius:18px;padding:25px 20px;background:white;min-height:206px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;transition:transform .2s,box-shadow .2s,border .2s}.topic-card .i{width:32px;height:32px}.topic-card .topic-ornament{font:italic 43px Georgia,serif;line-height:1;color:var(--blue)}.topic-card:nth-child(2) .topic-ornament{color:var(--teal)}.topic-card:nth-child(3) .topic-ornament{color:var(--violet)}.topic-card:nth-child(4) .topic-ornament{color:var(--amber)}.topic-card h3{font:700 20px Georgia,"Songti SC",serif;margin:0 0 6px}.topic-card p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}.topic-card .linkline{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:11px;margin-top:16px;color:#4d57b1}.process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:35px}.process-step{background:#f4f6fc;border-radius:16px;padding:24px;border:1px solid #eaedf6}.process-step .count{font:italic 33px Georgia,serif;color:#7c7dd6;margin-bottom:18px}.process-step h3{margin-bottom:6px}.process-step p{font-size:12px;color:var(--muted);line-height:1.6}.showcase{background:radial-gradient(circle at 70% 15%,#ebeafd,transparent 40%),#f8f9fe}.logic-demo{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-top:32px}.logic-box{border:1px solid #dde2f4;background:#fff;border-radius:20px;box-shadow:var(--shadow);padding:30px}.logic-switch{display:flex;gap:8px;flex-wrap:wrap}.logic-switch button{font-size:12px;border-radius:9px;padding:10px 13px;background:#f5f6fc;border:1px solid #e8eaf2;color:#4f5975;font-weight:650}.logic-switch button.active{background:#eceaff;color:#5347c6;border-color:#bbb5fa}.logic-visual{display:flex;align-items:center;justify-content:center;gap:20px;margin:35px 0}.logic-symbol{border-radius:18px;padding:20px 25px;background:linear-gradient(130deg,#f5f4ff,#fff);border:1px solid #dcd9fc;font:italic clamp(35px,4vw,58px) Georgia,serif;min-width:114px;text-align:center;transition:transform .25s}.logic-symbol:hover{transform:translateY(-4px)}.logic-arrow{font-size:34px;color:#6559db}.logic-caption{text-align:center;color:var(--muted);font-size:13px;min-height:40px}.footer{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:11px;color:#8190ad;border-top:1px solid var(--line);margin-top:30px;padding-top:20px}.app-page{background:radial-gradient(circle at 100% 0,#eeeaff 0,transparent 23%),var(--bg);min-height:calc(100dvh - 68px)}.page-title{font:700 clamp(32px,3.4vw,46px) Georgia,"Songti SC",serif;letter-spacing:-1px;margin:0 0 9px}.page-sub{font-size:13px;line-height:1.7;color:var(--muted);max-width:780px}.page-header{margin-bottom:25px}.panel{background:var(--paper);border:1px solid #e4e7f1;border-radius:var(--r);box-shadow:0 6px 23px #2b3a6b08}.workspace-grid{display:grid;grid-template-columns:minmax(360px,.98fr) minmax(400px,1.02fr);gap:20px;align-items:start}.panel-pad{padding:clamp(20px,2.2vw,32px)}.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.panel-heading h2{margin:0;font:700 22px Georgia,"Songti SC",serif}.meta-chips{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.tag{font-size:11px;padding:7px 10px;border-radius:100px;font-weight:700;background:#edf1ff;color:#3c55a0;white-space:nowrap}.tag.teal{background:#e5f6f2;color:#148876}.tag.amber{background:#fff2dc;color:#9c691c}.tag.violet{background:#efeaff;color:#6550c4}.tag.coral{background:#fff0ef;color:#c44e5c}.tag.neutral{background:#f2f4f9;color:#68728a}.math-statement{background:#f5f7fc;border:1px solid #eef0f7;border-radius:13px;padding:23px;margin:16px 0 22px;font:500 clamp(17px,1.6vw,20px)/1.72 Georgia,"Songti SC",serif}.problem-title{font:700 21px Georgia,"Songti SC",serif;margin-bottom:7px}.label-small{font-size:10px;letter-spacing:1.5px;color:#96a2bc;text-transform:uppercase;font-weight:800}.accordion{border:1px solid #e9ebf4;border-radius:12px;margin:10px 0;overflow:hidden}.accordion summary{padding:15px 16px;display:flex;align-items:center;gap:10px;background:#f7f8fc;list-style:none;font-weight:700;font-size:13px;cursor:pointer}.accordion summary::-webkit-details-marker{display:none}.accordion summary .i{color:#6a5de5}.accordion summary .chev{margin-left:auto;transition:transform .15s}.accordion[open] summary .chev{transform:rotate(180deg)}.accordion-content{padding:15px 20px;font-size:12.5px;color:#56627c;line-height:1.8}.accordion-content ol,.accordion-content ul{padding-left:20px;margin:0}.accordion-content li+li{margin-top:8px}.skill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.input-panel label{font-weight:650;font-size:13px}.input-help{margin:8px 0 13px;font-size:12px;color:var(--muted);line-height:1.6}textarea{display:block;width:100%;min-height:190px;padding:17px 18px;resize:vertical;border:1px solid #cfd6e8;border-radius:12px;background:linear-gradient(180deg,#fbfcff,#fff);color:var(--ink);font-size:13px;line-height:1.8}textarea:focus{border-color:#8172e9;outline:3px solid #e9e6ff}.field-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}.symbol-group{display:flex;gap:5px}.symbol-btn{border:0;padding:6px 8px;background:transparent;border-radius:8px;color:#59679e;font:italic 17px Georgia,serif}.symbol-btn:hover{background:#f1f0ff}.count{color:#8f99ae;font-size:11px}.submit-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}.submit-row .btn{min-width:175px}.hint-note{font-size:11px;line-height:1.55;color:#7b87a4}.feedback{margin-top:20px;overflow:hidden}.feedback-body{padding:20px}.status-line{border-radius:12px;background:#fff6e6;color:#98631e;display:flex;align-items:center;gap:10px;padding:13px 15px;margin:15px 0;font-size:13px;font-weight:750}.feedback-part{border-top:1px solid #eef0f7;padding:12px 2px;display:grid;grid-template-columns:110px 1fr;gap:12px;font-size:12px;line-height:1.65}.feedback-part .key{font-weight:780;color:#40548c}.feedback-part .value{color:#5e6984}.feedback-empty{text-align:center;padding:34px 18px;color:#8b96ab}.feedback-empty .i{width:28px;height:28px;margin:0 auto 14px;color:#a79eea}.feedback-empty strong{display:block;color:#4a5981;margin-bottom:6px}.feedback-empty p{font-size:12px;line-height:1.6;max-width:420px;margin:0 auto}.notice{background:#f1f4fa;color:#75829e;padding:12px 15px;border-radius:10px;font-size:11px;line-height:1.6;margin-top:10px}.pager{display:flex;gap:7px;align-items:center}.pager button{border:1px solid #e5e8f2;background:#fff;border-radius:9px;padding:8px;color:#6b77a0}.pager button:hover{background:#f2f3fd}.pager .current{color:#7f88a0;font-size:11px;margin-right:5px}.section-box{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.filters{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.search{border:1px solid #dbe0ef;background:#fff;border-radius:11px;padding:12px 14px;min-width:230px;max-width:100%;flex:1;color:var(--ink)}.filter-select{border:1px solid #dbe0ef;background:#fff;border-radius:11px;padding:11px 13px;min-width:155px;color:var(--ink)}.library-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:24px}.library-card{display:flex;flex-direction:column;text-align:left;min-height:220px;border-radius:17px;background:#fff;border:1px solid #e3e7f1;padding:22px;transition:transform .2s,box-shadow .2s,border .2s}.library-card h3{font:700 19px Georgia,"Songti SC",serif;margin:18px 0 9px}.library-card p{color:var(--muted);font-size:12px;line-height:1.7;flex:1}.library-card .card-foot{display:flex;justify-content:space-between;color:#6872a3;font-weight:700;font-size:11px;align-items:center;margin-top:12px}.library-empty{padding:40px;text-align:center;color:var(--muted)}.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.skill-card{padding:25px;background:white;border:1px solid var(--line);border-radius:18px}.skill-card h3{font:700 20px Georgia,"Songti SC",serif;margin-bottom:10px}.skill-card p{font-size:13px;color:var(--muted);line-height:1.7}.grade-row{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.grade-button{border:1px solid #e2e6f0;background:#fff;color:#586687;border-radius:10px;padding:11px 16px;font-size:12px;font-weight:700}.grade-button.selected{background:#edeaff;color:#574bcc;border-color:#c4bbff}.grade-panel{padding:30px;background:#fff;border:1px solid var(--line);border-radius:19px}.grade-panel ul{margin:14px 0 0;padding-left:22px;color:#58657e;line-height:2;font-size:13px}.about-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.about-panel{padding:30px}.about-panel h2{font:700 27px Georgia,"Songti SC",serif}.about-panel p{font-size:14px;line-height:1.85;color:#5d6a81}.mini-stat{padding:24px;border-radius:16px;background:linear-gradient(130deg,#eceafa,#fff);color:#5452ac}.mini-stat .stat-value{font:700 38px Georgia,serif}.tiny-caption{font-size:11px;color:#78859e}.toast{position:fixed;bottom:25px;left:calc(var(--sidebar) + 50%);transform:translateX(-50%);background:#28365a;color:#fff;padding:12px 20px;border-radius:11px;box-shadow:0 15px 55px #0003;z-index:50;font-size:12px}.mobile-overlay{display:none}
+@keyframes gentle-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}@media(max-width:1180px){.hero-grid{grid-template-columns:1.1fr .9fr}.math-canvas{height:320px}.hero-title{font-size:clamp(47px,5vw,67px)}.workspace-grid{grid-template-columns:1fr}.library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-grid,.topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-panel{min-height:auto}.hero-grid{min-height:330px}}
+@media(max-width:760px){.shell{display:block}.sidebar{width:260px;position:fixed;top:0;bottom:0;left:0;transform:translateX(-110%);transition:transform .22s;z-index:30}.sidebar.open{transform:translateX(0)}.mobile-overlay.active{display:block;position:fixed;inset:0;background:#0e193c7a;z-index:25}.main{height:100dvh}.topbar{min-height:60px;padding:0 17px}.menu-toggle{display:inline-flex}.tiny-label{display:none}.hero-panel{min-height:calc(100dvh - 60px);padding:27px 19px}.hero-grid{display:block;min-height:0}.hero-title{font-size:clamp(43px,10vw,58px);letter-spacing:-1.5px}.hero-intro{font-size:13px}.math-canvas{height:205px;max-width:450px;margin:0 auto}.math-bottom-label,.math-tip{display:none}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.feature-card{padding:15px;min-height:148px}.feature-card h3{font-size:16px}.feature-card p{font-size:11px}.feature-icon{margin-bottom:9px}.home-section{min-height:auto;padding:45px 20px}.topic-grid,.process,.skills-grid,.about-layout{grid-template-columns:1fr}.logic-demo{grid-template-columns:1fr}.body-padding{padding:23px 16px}.workspace-grid{grid-template-columns:minmax(0,1fr)}.library-grid{grid-template-columns:1fr}.feedback-part{grid-template-columns:1fr;gap:2px}.submit-row{align-items:stretch}.submit-row .btn{min-width:0}.section-head{align-items:start;flex-direction:column}.toast{left:50%}}
+@media(max-width:380px){.feature-grid{grid-template-columns:1fr}.hero-title{font-size:43px}.brand-name{font-size:17px}.chip-neutral{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.main{scroll-behavior:auto;scroll-snap-type:none!important}}
+
+/* Phase 1.5 · Competition Hub (bilingual, original-practice-first) */
+.competition-page { padding-bottom:40px; }
+.competition-hero { position:relative; overflow:hidden; padding:clamp(28px,3.3vw,46px); border-radius:23px; border:1px solid #e2e7fa; background:linear-gradient(112deg,#fff 0%,#f4f6ff 54%,#f1fcf9 100%); box-shadow:0 10px 30px rgba(40,60,111,.04); }
+.competition-hero:after { content:""; position:absolute; width:300px; height:300px; right:-190px; top:-210px; border:55px solid rgba(115,100,219,.07); border-radius:50%; pointer-events:none; }
+.competition-hero-body { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.competition-hero .page-title { font-size:clamp(37px,3.7vw,55px); line-height:1.15; }
+.competition-hero .page-sub { max-width:680px; font-size:14px; }
+.competition-hero-mark { height:105px; flex:0 0 230px; position:relative; }
+.competition-hero-mark span { position:absolute; display:grid; place-items:center; width:65px; height:65px; border-radius:18px; font-family:Georgia,serif; font-weight:bold; font-size:27px; color:#5f57cb; border:1px solid #d9daf9; background:#ffffffb8; transform:rotate(-8deg); box-shadow:0 14px 25px #4d61a713; }
+.competition-hero-mark span:nth-child(1) {left:5px; top:4px;} .competition-hero-mark span:nth-child(2) {left:90px; top:39px; transform:rotate(10deg); color:#129e96;} .competition-hero-mark span:nth-child(3) {left:169px; top:0; transform:rotate(3deg); color:#d39a37;}
+.competition-metrics { display:flex; align-items:center; gap:12px; margin-top:27px; flex-wrap:wrap; }
+.competition-metrics>span { border-radius:100px; padding:9px 16px; background:#fffafc; border:1px solid #e8eaf6; font-size:11px; font-weight:750; color:#5c5c90; letter-spacing:.25px; }
+.competition-metrics small { font-size:11px; font-weight:500; }
+.comp-controls { margin-top:26px; padding:20px; background:white; border:1px solid var(--line); border-radius:19px; display:grid; gap:16px; }
+.comp-country-tabs { display:flex; gap:6px; background:#f0f2f8; padding:5px; border-radius:12px; width:max-content; max-width:100%; }
+.comp-country-tabs button { border:0; background:transparent; color:#68748d; font-size:12px; font-weight:700; padding:9px 19px; border-radius:9px; transition:background .18s,color .18s; }
+.comp-country-tabs button.selected { background:#243773; color:#fff; box-shadow:0 3px 7px #17254f22; }
+.comp-filters { display:flex; flex-wrap:wrap; gap:9px; align-items:center; }
+.comp-filters label { display:block; }
+.comp-filters .comp-search-wrap { position:relative; flex:1 1 260px; }
+.comp-search-wrap .i { position:absolute; top:50%; left:13px; transform:translateY(-50%); color:#657291; }
+.comp-filters input,.comp-filters select { min-height:43px; border:1px solid #dfe5f0; border-radius:11px; background:#fff; font-size:12px; color:#263b64; padding:10px 12px; }
+.comp-filters input { width:100%; padding-left:37px; }
+.comp-filters select { min-width:155px; max-width:205px; }
+.comp-reset { border:0; background:transparent; font-size:12px; color:#656c9f; font-weight:700; padding:10px; }
+.comp-reset:hover { color:#3931b6; text-decoration:underline; }
+.comp-result-head { display:flex; justify-content:space-between; gap:12px; padding:26px 4px 14px; align-items:center; }
+.comp-result-head strong { font-size:14px; } .comp-result-head span { color:#8a91a6; font-size:11px; letter-spacing:.7px; }
+.competition-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.competition-card { --comp-color:#7360df; --comp-tint:#f2eeff; display:flex; flex-direction:column; min-height:323px; border:1px solid #e4e8f2; border-radius:20px; background:#fff; overflow:hidden; box-shadow:0 8px 24px #23316c09; padding:20px; transition:transform .22s,box-shadow .22s,border-color .22s; position:relative; }
+.competition-card:before { content:""; height:4px; position:absolute; left:0; right:0; top:0; background:var(--comp-color); }
+.competition-card:hover { transform:translateY(-5px); box-shadow:0 17px 33px #2a3b7e1a; border-color:#d4dcf5; }
+.accent-blue { --comp-color:#497bea; --comp-tint:#eaf1ff; } .accent-teal { --comp-color:#16a89c; --comp-tint:#e7f9f4; } .accent-purple { --comp-color:#8d68df; --comp-tint:#f2ecff; } .accent-coral { --comp-color:#f0817a; --comp-tint:#fff0ee; } .accent-amber { --comp-color:#d99a31; --comp-tint:#fff4df; }
+.competition-card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:13px; }
+.competition-symbol { display:grid; place-items:center; height:52px; min-width:52px; padding:0 9px; background:var(--comp-tint); color:var(--comp-color); border-radius:15px; font:700 26px Georgia,"Songti SC",serif; }
+.country-pill { padding:5px 8px; background:#f4f6fb; border-radius:20px; color:#78849b; font-size:10px; font-weight:800; letter-spacing:.4px; }
+.competition-card h3 { margin:0; font:700 25px Georgia,"Songti SC",serif; color:#18274f; }
+.competition-full { margin:8px 0 4px; font-size:12px; font-weight:650; line-height:1.5; color:#46577c; min-height:36px; }
+.competition-desc { margin:5px 0 13px; font-size:12px; line-height:1.7; color:#78839a; flex:1; }
+.competition-labels { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:15px; }
+.competition-labels .tag { font-size:10px; }
+.competition-bottom { display:flex; justify-content:space-between; align-items:center; gap:6px; border-top:1px solid #eef0f7; padding-top:14px; }
+.competition-bottom>span { font-size:10px; color:#8a96aa; }
+.competition-open { display:flex; align-items:center; gap:5px; border:0; color:var(--comp-color); background:transparent; font-size:11px; font-weight:800; padding:5px 0; }
+.competition-open:hover { text-decoration:underline; }
+.comp-disclaimer { display:flex; gap:10px; align-items:flex-start; margin:24px 0 0; padding:14px 18px; color:#697b91; background:#eef3fa; border-radius:13px; }
+.comp-disclaimer .i { margin-top:2px; flex:none; } .comp-disclaimer p { font-size:11px; line-height:1.75; margin:0; }
+.comp-no-results { grid-column:1/-1; text-align:center; padding:60px 20px; background:#fff; border:1px dashed #c8d2e6; border-radius:20px; color:#7e8aa6; }
+.comp-no-results .i { margin:0 auto 10px; }
+.competition-home-strip { display:flex; align-items:center; gap:20px; margin-top:27px; background:linear-gradient(100deg,#f0f2ff,#eaf8f6); border:1px solid #e0e7fa; border-radius:18px; padding:18px 22px; }
+.strip-icon { display:grid;place-items:center;border-radius:14px;background:#e6e4ff;color:#5c55cd;width:54px;height:54px;flex:none; }
+.strip-copy { flex:1; } .strip-copy strong { font-size:17px; font-family:Georgia,"Songti SC",serif; } .strip-copy p { margin:5px 0 0;color:#65768b;font-size:12px;line-height:1.5; }
+.competition-detail .back-competition { display:flex;gap:5px;align-items:center;border:0;background:transparent;padding:4px 0 18px;color:#647398;font-weight:700;font-size:12px; }
+.competition-detail .back-competition:hover { color:#6753ce; }
+.competition-detail-header { --comp-color:#7164db; --comp-tint:#f5f1ff; border:1px solid #e4e6f5;border-top:4px solid var(--comp-color); background:linear-gradient(120deg,#fff 30%,var(--comp-tint));border-radius:20px;padding:28px 32px; }
+.competition-detail-identity { display:flex;align-items:center;gap:18px; }
+.competition-detail-symbol { display:grid;place-items:center;flex:0 0 80px;height:80px;border:1px solid #dfd9f8;border-radius:22px;font:700 39px Georgia,serif;background:white;color:var(--comp-color);box-shadow:0 7px 30px #4d58a20c; }
+.competition-detail-header .page-title { margin:0 0 4px; }
+.competition-detail-header .competition-full { min-height:0; margin:0; }
+.competition-detail-header>p { margin:21px 0 16px; font-size:13px; color:#67748f; }
+.competition-detail-meta { display:flex;gap:8px;flex-wrap:wrap; }
+.competition-detail-meta span { border:1px solid #e2e7f5;border-radius:20px;padding:7px 12px;font-size:11px;background:#ffffffbe;color:#596881; }
+.competition-detail-columns { display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.9fr);gap:20px;align-items:start;margin-top:22px; }
+.competition-detail-columns .panel-heading h2 { display:flex;align-items:center;gap:9px; }
+.competition-detail-columns .section-desc { margin:0 0 16px; }
+.competition-exercise-list { display:grid; gap:9px; }
+.competition-exercise { display:flex;align-items:center;gap:15px;width:100%;text-align:left;border:1px solid #e7e9f2;border-radius:13px;background:linear-gradient(90deg,#fafbff,#fff);padding:15px;transition:border .2s,transform .2s; }
+.competition-exercise:hover { border-color:#b6b2ee;transform:translateX(3px); }
+.exercise-index { display:grid;place-items:center;height:38px;width:38px;border-radius:11px;background:#e8eafb;color:#615bc1;font-size:12px;font-weight:800;flex:none; }
+.exercise-detail { flex:1; } .exercise-detail strong { font-size:13px; } .exercise-tags { display:flex;flex-wrap:wrap;gap:6px;font-size:10px;color:#8a94aa;margin-top:6px; }
+.competition-resource-column { display:grid;gap:18px; }
+.competition-resource-column p { line-height:1.7;font-size:12px;color:var(--muted); }
+.competition-outlinks { display:grid;gap:9px;margin-top:20px; }
+.competition-outlinks a { display:flex;align-items:center;gap:8px;padding:13px;border-radius:11px;border:1px solid #dce3f4;color:#3855b2;font-size:12px;font-weight:750;transition:background .15s; }
+.competition-outlinks a:hover { background:#f2f5ff; }
+.competition-outlinks a .i:last-child { margin-left:auto; }
+.comp-focus-tags { display:flex;gap:8px;flex-wrap:wrap; } .comp-focus-tags button { cursor:pointer; }
+.comp-focus-tags button:hover { background:#e8e7ff; }
+.contest-context-note { display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0 18px;font-size:11px;color:#66779c;padding:10px 12px;border:1px solid #dedff8;background:#f6f5ff;border-radius:11px; }
+.text-link { border:0;background:transparent;color:#5a4ec4;text-decoration:underline;font-weight:750;padding:0;margin-left:auto;font-size:11px; }
+.sr-only { position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(max-width:1360px){.competition-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:1050px){.competition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.competition-detail-columns{grid-template-columns:1fr}}
+@media(max-width:760px){.competition-hero-mark{display:none}.competition-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.comp-filters select{min-width:130px}.competition-home-strip{flex-wrap:wrap}.competition-home-strip .btn{margin-left:auto}}
+@media(max-width:520px){.competition-grid{grid-template-columns:1fr}.competition-card{min-height:270px}.competition-detail-header{padding:22px}.competition-detail-symbol{width:60px;height:60px;flex-basis:60px;font-size:29px}.competition-detail-header .page-title{font-size:36px}.comp-country-tabs{width:100%}.comp-country-tabs button{flex:1;padding:9px 8px}.comp-filters label,.comp-filters select{flex:1 1 100%;width:100%;max-width:none}.comp-filters .comp-search-wrap{flex-basis:100%}.comp-result-head>span{display:none}}
+@media(prefers-reduced-motion:reduce){.competition-card,.competition-exercise,.comp-country-tabs button{transition:none}.competition-card:hover,.competition-exercise:hover{transform:none}}
+
+</style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+/* Curated bilingual Phase 1 demonstration content. */
+window.CLINIC_DATA = [
+  {
+    "id": "p01",
+    "kind": "proof",
+    "topic": "algebra",
+    "difficulty": "foundation",
+    "level": "g8",
+    "title": {
+      "en": "Odd-number sums",
+      "zh": "连续奇数求和"
+    },
+    "statement": {
+      "en": "Prove that 1 + 3 + ··· + (2n − 1) = n² for every positive integer n.",
+      "zh": "证明：对任意正整数 n，都有 1 + 3 + ··· + (2n − 1) = n²。"
+    },
+    "hints": {
+      "en": [
+        "Try induction on n.",
+        "What changes when n increases by 1?",
+        "Use k² + (2k + 1) = (k + 1)²."
+      ],
+      "zh": [
+        "尝试数学归纳法（Induction）。",
+        "n 增加 1 时，和式增加了哪一项？",
+        "利用 k² + (2k + 1) = (k + 1)²。"
+      ]
+    },
+    "reference": {
+      "en": "Base case n = 1 is true. Suppose the formula holds at n = k. Adding the next odd number 2k + 1 gives k² + 2k + 1 = (k + 1)². Thus the result holds for every positive integer n by induction.",
+      "zh": "当 n = 1 时成立。假设 n = k 时成立。增加下一项 2k + 1 后，和变为 k² + 2k + 1 = (k + 1)²。因此根据数学归纳法（Induction），结论对所有正整数成立。"
+    },
+    "skills": {
+      "en": [
+        "Induction",
+        "Algebra"
+      ],
+      "zh": [
+        "数学归纳法（Induction）",
+        "代数变形（Algebra）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Do not omit the base case."
+      ],
+      "zh": [
+        "不要遗漏归纳基础。"
+      ]
+    }
+  },
+  {
+    "id": "p02",
+    "kind": "proof",
+    "topic": "number",
+    "difficulty": "foundation",
+    "level": "g9",
+    "title": {
+      "en": "Odd squares mod 8",
+      "zh": "奇数平方与余数"
+    },
+    "statement": {
+      "en": "Prove that the square of every odd integer leaves remainder 1 when divided by 8.",
+      "zh": "证明：任意奇数的平方除以 8，余数都是 1。"
+    },
+    "hints": {
+      "en": [
+        "Let the odd integer be 2k + 1.",
+        "Expand the square.",
+        "Consecutive integers have opposite parity."
+      ],
+      "zh": [
+        "设该奇数为 2k + 1。",
+        "展开平方。",
+        "相邻整数中必有一个偶数（Parity）。"
+      ]
+    },
+    "reference": {
+      "en": "If m = 2k + 1, then m² = 4k(k + 1) + 1. Since k(k + 1) is even, 8 divides 4k(k + 1), so m² ≡ 1 (mod 8).",
+      "zh": "令 m = 2k + 1，则 m² = 4k(k + 1) + 1。因为 k 与 k + 1 中至少有一个偶数，所以 k(k + 1) 为偶数，故 m² ≡ 1 (mod 8)。"
+    },
+    "skills": {
+      "en": [
+        "Parity",
+        "Modular arithmetic"
+      ],
+      "zh": [
+        "奇偶性（Parity）",
+        "同余（Modular arithmetic）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "p03",
+    "kind": "proof",
+    "topic": "number",
+    "difficulty": "core",
+    "level": "g10",
+    "title": {
+      "en": "Three consecutive integers",
+      "zh": "三个连续整数"
+    },
+    "statement": {
+      "en": "Prove that n(n + 1)(n + 2) is divisible by 6 for every integer n.",
+      "zh": "证明：对任意整数 n，n(n + 1)(n + 2) 都能被 6 整除。"
+    },
+    "hints": {
+      "en": [
+        "Factor 6 into 2 × 3.",
+        "Find an even integer among the three.",
+        "One of three consecutive integers is divisible by 3."
+      ],
+      "zh": [
+        "将 6 分解为 2 × 3。",
+        "三个相邻整数中至少有一个偶数。",
+        "三个相邻整数中必有一个是 3 的倍数。"
+      ]
+    },
+    "reference": {
+      "en": "Among three consecutive integers one is even and one is divisible by 3. Thus the product is divisible by 2 and by 3; since gcd(2,3)=1 it is divisible by 6.",
+      "zh": "三个连续整数中至少有一个是偶数，且恰有一个是 3 的倍数，因此乘积同时被 2 和 3 整除。由于 2、3 互质，乘积能被 6 整除。"
+    },
+    "skills": {
+      "en": [
+        "Divisibility",
+        "Casework"
+      ],
+      "zh": [
+        "整除（Divisibility）",
+        "分类讨论（Casework）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "p04",
+    "kind": "proof",
+    "topic": "combinatorics",
+    "difficulty": "challenge",
+    "level": "g11",
+    "title": {
+      "en": "A consecutive pair",
+      "zh": "抽屉原理与相邻数"
+    },
+    "statement": {
+      "en": "Choose n + 1 distinct integers from {1, 2, …, 2n}. Prove that two selected numbers are consecutive.",
+      "zh": "从 {1, 2, …, 2n} 中选出 n + 1 个不同整数。证明其中必有两个相邻整数。"
+    },
+    "hints": {
+      "en": [
+        "Split the set into n disjoint pairs.",
+        "Make each pair consecutive.",
+        "Apply the pigeonhole principle."
+      ],
+      "zh": [
+        "把原集合分为 n 个互不相交的数对。",
+        "使每个数对中的两个数相邻。",
+        "使用抽屉原理（Pigeonhole Principle）。"
+      ]
+    },
+    "reference": {
+      "en": "Partition into the n pairs {1,2}, {3,4}, …, {2n−1,2n}. Selecting n+1 distinct numbers forces two to belong to the same pair, which are consecutive.",
+      "zh": "把集合分为 {1,2}, {3,4}, …, {2n−1,2n} 共 n 组。从中选 n+1 个不同整数，按抽屉原理（Pigeonhole Principle），必有两个数属于同一组，故它们相邻。"
+    },
+    "skills": {
+      "en": [
+        "Pigeonhole",
+        "Construction"
+      ],
+      "zh": [
+        "抽屉原理（Pigeonhole）",
+        "构造法（Construction）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "p05",
+    "kind": "proof",
+    "topic": "algebra",
+    "difficulty": "core",
+    "level": "g10",
+    "title": {
+      "en": "A quadratic inequality",
+      "zh": "平方不等式"
+    },
+    "statement": {
+      "en": "Prove (a + b)² ≤ 2(a² + b²) for all real a,b, and determine when equality holds.",
+      "zh": "证明：对所有实数 a,b，(a + b)² ≤ 2(a² + b²)，并确定等号成立条件。"
+    },
+    "hints": {
+      "en": [
+        "Start from (a − b)² ≥ 0.",
+        "Expand and rearrange.",
+        "When does equality hold?"
+      ],
+      "zh": [
+        "从 (a − b)² ≥ 0 出发。",
+        "展开并移项。",
+        "等号何时成立？"
+      ]
+    },
+    "reference": {
+      "en": "Because (a−b)²≥0, we have 2ab≤a²+b². Therefore (a+b)²=a²+2ab+b²≤2(a²+b²). Equality holds exactly when a=b.",
+      "zh": "由 (a−b)²≥0 得 2ab≤a²+b²，因此 (a+b)²=a²+2ab+b²≤2(a²+b²)。当且仅当 a=b 时等号成立。"
+    },
+    "skills": {
+      "en": [
+        "Inequalities",
+        "Equality case"
+      ],
+      "zh": [
+        "不等式（Inequalities）",
+        "等号条件（Equality case）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "c01",
+    "kind": "counterexample",
+    "topic": "number",
+    "difficulty": "foundation",
+    "level": "g8",
+    "title": {
+      "en": "Equal squares?",
+      "zh": "平方相等意味着数相等吗？"
+    },
+    "statement": {
+      "en": "Find a counterexample: “For all integers a,b, if a² = b², then a = b.”",
+      "zh": "寻找反例（Counterexample）：“对任意整数 a,b，若 a² = b²，则 a = b。”"
+    },
+    "hints": {
+      "en": [
+        "Try a positive integer and a negative integer.",
+        "Can distinct numbers have the same square?"
+      ],
+      "zh": [
+        "考虑一正一负的两个整数。",
+        "不同整数的平方能否相同？"
+      ]
+    },
+    "reference": {
+      "en": "Take a=1 and b=−1. Then a²=b²=1, but a≠b. This single counterexample disproves the universal claim.",
+      "zh": "取 a=1，b=−1，则 a²=b²=1，但 a≠b。一个反例（Counterexample）就足以推翻全称命题。"
+    },
+    "skills": {
+      "en": [
+        "Counterexample",
+        "Quantifiers"
+      ],
+      "zh": [
+        "反例（Counterexample）",
+        "量词（Quantifiers）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "c02",
+    "kind": "counterexample",
+    "topic": "number",
+    "difficulty": "foundation",
+    "level": "g7",
+    "title": {
+      "en": "Are all primes odd?",
+      "zh": "所有质数都是奇数吗？"
+    },
+    "statement": {
+      "en": "Find a counterexample: “Every prime number is odd.”",
+      "zh": "寻找反例（Counterexample）：“每个质数都是奇数。”"
+    },
+    "hints": {
+      "en": [
+        "Check the smallest primes.",
+        "Recall the definition of prime."
+      ],
+      "zh": [
+        "检查最小的几个质数。",
+        "回顾质数（Prime number）的定义。"
+      ]
+    },
+    "reference": {
+      "en": "The number 2 is prime and even, so the statement is false.",
+      "zh": "2 是质数（Prime number），同时也是偶数。因此原命题为假。"
+    },
+    "skills": {
+      "en": [
+        "Counterexample",
+        "Prime numbers"
+      ],
+      "zh": [
+        "反例（Counterexample）",
+        "质数（Prime numbers）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "e01",
+    "kind": "example",
+    "topic": "algebra",
+    "difficulty": "core",
+    "level": "g10",
+    "title": {
+      "en": "Irrational × irrational",
+      "zh": "无理数相乘"
+    },
+    "statement": {
+      "en": "Give two irrational numbers whose product is rational. Explain why your example works.",
+      "zh": "举出两个无理数（Irrational numbers），使它们的积为有理数（Rational number），并说明原因。"
+    },
+    "hints": {
+      "en": [
+        "Think about √2.",
+        "What is √2 × √2?"
+      ],
+      "zh": [
+        "考虑 √2。",
+        "√2 × √2 等于多少？"
+      ]
+    },
+    "reference": {
+      "en": "Choose √2 and √2. Both are irrational, but their product is 2, a rational number.",
+      "zh": "取 √2 和 √2。两者都是无理数（Irrational numbers），但乘积为 2，是有理数（Rational number）。"
+    },
+    "skills": {
+      "en": [
+        "Construction",
+        "Number systems"
+      ],
+      "zh": [
+        "构造法（Construction）",
+        "数系（Number systems）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "e02",
+    "kind": "example",
+    "topic": "algebra",
+    "difficulty": "foundation",
+    "level": "g7",
+    "title": {
+      "en": "Consecutive sum to zero",
+      "zh": "和为零的相邻整数"
+    },
+    "statement": {
+      "en": "Give three consecutive integers whose sum is 0.",
+      "zh": "举出三个连续整数，使它们的和为 0。"
+    },
+    "hints": {
+      "en": [
+        "Make 0 the middle number."
+      ],
+      "zh": [
+        "让 0 成为中间的整数。"
+      ]
+    },
+    "reference": {
+      "en": "The integers −1, 0, 1 are consecutive and sum to 0.",
+      "zh": "−1、0、1 是三个相邻整数，且和为 0。"
+    },
+    "skills": {
+      "en": [
+        "Construction"
+      ],
+      "zh": [
+        "构造法（Construction）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "t01",
+    "kind": "truefalse",
+    "topic": "number",
+    "difficulty": "foundation",
+    "level": "g9",
+    "title": {
+      "en": "Always even?",
+      "zh": "一定是偶数吗？"
+    },
+    "statement": {
+      "en": "True or false? For every integer n, n² + n is even. Justify your answer.",
+      "zh": "判断真伪（True or False）并说明理由：对任意整数 n，n² + n 都是偶数。"
+    },
+    "hints": {
+      "en": [
+        "Factor the expression.",
+        "Two consecutive integers cannot both be odd."
+      ],
+      "zh": [
+        "先因式分解。",
+        "两个相邻整数不可能都是奇数。"
+      ]
+    },
+    "reference": {
+      "en": "True. Since n²+n=n(n+1) and one of two consecutive integers is even, the product is even.",
+      "zh": "正确（True）。因为 n²+n=n(n+1)，两个相邻整数中必有一个是偶数，所以乘积是偶数。"
+    },
+    "skills": {
+      "en": [
+        "Parity",
+        "Factorization"
+      ],
+      "zh": [
+        "奇偶性（Parity）",
+        "因式分解（Factorization）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  },
+  {
+    "id": "t02",
+    "kind": "truefalse",
+    "topic": "number",
+    "difficulty": "challenge",
+    "level": "g11",
+    "title": {
+      "en": "Divisibility trap",
+      "zh": "整除的陷阱"
+    },
+    "statement": {
+      "en": "True or false? For positive integers a,b,c, if a divides bc, then a divides b or a divides c. Justify.",
+      "zh": "判断真伪（True or False）并说明理由：对正整数 a,b,c，如果 a 整除 bc，那么 a 整除 b 或 a 整除 c。"
+    },
+    "hints": {
+      "en": [
+        "Test a composite divisor a.",
+        "Try a=6, b=2, c=3."
+      ],
+      "zh": [
+        "尝试取合数 a。",
+        "试试 a=6，b=2，c=3。"
+      ]
+    },
+    "reference": {
+      "en": "False. Let a=6, b=2, c=3. Then 6 divides bc=6, but 6 divides neither 2 nor 3.",
+      "zh": "错误（False）。取 a=6，b=2，c=3，6 整除 bc=6，但 6 既不整除 2，也不整除 3。"
+    },
+    "skills": {
+      "en": [
+        "Counterexample",
+        "Divisibility"
+      ],
+      "zh": [
+        "反例（Counterexample）",
+        "整除（Divisibility）"
+      ]
+    },
+    "mistakes": {
+      "en": [
+        "Make sure your reasoning covers every required case."
+      ],
+      "zh": [
+        "检查是否覆盖了题目要求的所有情况。"
+      ]
+    }
+  }
+];
+
+</script>
+  <script>
+/* Verified-curation demo metadata. Original exercises only. */
+window.CLINIC_CONTESTS = [
+  {
+    "id": "comc",
+    "country": "ca",
+    "name": "COMC",
+    "full": {
+      "en": "Canadian Open Mathematics Challenge",
+      "zh": "加拿大公开数学挑战赛"
+    },
+    "organizer": {
+      "en": "Canadian Mathematical Society",
+      "zh": "加拿大数学学会"
+    },
+    "level": {
+      "en": "Secondary school",
+      "zh": "中学"
+    },
+    "format": "written",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics"
+    ],
+    "difficulty": "challenge",
+    "description": {
+      "en": "Challenge problems that reward clear, original mathematical reasoning.",
+      "zh": "强调推理、构造与清晰书面表达的挑战题。"
+    },
+    "official": "https://cms.math.ca/competitions/comc/",
+    "archive": "https://cms.math.ca/competitions/",
+    "examples": [
+      "p03",
+      "p04",
+      "t02",
+      "p05"
+    ],
+    "symbol": "◇",
+    "accent": "purple"
+  },
+  {
+    "id": "csmc",
+    "country": "ca",
+    "name": "CSMC",
+    "full": {
+      "en": "Canadian Senior Mathematics Contest",
+      "zh": "加拿大高中数学竞赛"
+    },
+    "organizer": {
+      "en": "University of Waterloo · CEMC",
+      "zh": "滑铁卢大学 · CEMC"
+    },
+    "level": {
+      "en": "Senior secondary",
+      "zh": "高中高年级"
+    },
+    "format": "mixed",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics"
+    ],
+    "difficulty": "core",
+    "description": {
+      "en": "A mix of short-answer and full-solution challenges.",
+      "zh": "结合简答与完整解答的综合数学训练。"
+    },
+    "official": "https://cemc.uwaterloo.ca/contests/csimc",
+    "archive": "https://cemc.uwaterloo.ca/resources/past-contests",
+    "examples": [
+      "p03",
+      "p05",
+      "p04",
+      "t01"
+    ],
+    "symbol": "∑",
+    "accent": "blue"
+  },
+  {
+    "id": "cimc",
+    "country": "ca",
+    "name": "CIMC",
+    "full": {
+      "en": "Canadian Intermediate Mathematics Contest",
+      "zh": "加拿大中级数学竞赛"
+    },
+    "organizer": {
+      "en": "University of Waterloo · CEMC",
+      "zh": "滑铁卢大学 · CEMC"
+    },
+    "level": {
+      "en": "Intermediate secondary",
+      "zh": "中学中级"
+    },
+    "format": "mixed",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics"
+    ],
+    "difficulty": "foundation",
+    "description": {
+      "en": "Build strong foundations with reasoning and full-solution practice.",
+      "zh": "训练核心数学技巧和完整解答的表达能力。"
+    },
+    "official": "https://cemc.uwaterloo.ca/contests/csimc",
+    "archive": "https://cemc.uwaterloo.ca/resources/past-contests",
+    "examples": [
+      "p01",
+      "p02",
+      "t01",
+      "c01"
+    ],
+    "symbol": "π",
+    "accent": "teal"
+  },
+  {
+    "id": "euclid",
+    "country": "ca",
+    "name": "Euclid",
+    "full": {
+      "en": "Euclid Mathematics Contest",
+      "zh": "欧几里得数学竞赛"
+    },
+    "organizer": {
+      "en": "University of Waterloo · CEMC",
+      "zh": "滑铁卢大学 · CEMC"
+    },
+    "level": {
+      "en": "Senior secondary",
+      "zh": "高中高年级"
+    },
+    "format": "mixed",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics",
+      "geometry"
+    ],
+    "difficulty": "challenge",
+    "description": {
+      "en": "Multi-step questions with both short and fully justified solutions.",
+      "zh": "多步骤求解，兼顾简答与严谨书面论证。"
+    },
+    "official": "https://cemc.uwaterloo.ca/contests/euclid",
+    "archive": "https://cemc.uwaterloo.ca/resources/past-contests",
+    "examples": [
+      "p05",
+      "p03",
+      "p04",
+      "e01"
+    ],
+    "symbol": "△",
+    "accent": "coral"
+  },
+  {
+    "id": "amc8",
+    "country": "us",
+    "name": "AMC 8",
+    "full": {
+      "en": "American Mathematics Competitions 8",
+      "zh": "美国数学竞赛 AMC 8"
+    },
+    "organizer": {
+      "en": "Mathematical Association of America",
+      "zh": "美国数学协会"
+    },
+    "level": {
+      "en": "Middle school",
+      "zh": "初中"
+    },
+    "format": "choice",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics",
+      "geometry"
+    ],
+    "difficulty": "foundation",
+    "description": {
+      "en": "Sharpen mathematical insight and flexible problem-solving.",
+      "zh": "通过基础数论、代数与逻辑提升解题直觉。"
+    },
+    "official": "https://maa.org/student-programs/amc/",
+    "archive": "https://maa.org/student-programs/amc/information-for-students-and-parents/",
+    "examples": [
+      "c02",
+      "e02",
+      "t01",
+      "p02"
+    ],
+    "symbol": "8",
+    "accent": "amber"
+  },
+  {
+    "id": "amc10",
+    "country": "us",
+    "name": "AMC 10",
+    "full": {
+      "en": "American Mathematics Competitions 10",
+      "zh": "美国数学竞赛 AMC 10"
+    },
+    "organizer": {
+      "en": "Mathematical Association of America",
+      "zh": "美国数学协会"
+    },
+    "level": {
+      "en": "Secondary school",
+      "zh": "高中"
+    },
+    "format": "choice",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics",
+      "geometry"
+    ],
+    "difficulty": "core",
+    "description": {
+      "en": "Develop contest speed, structure, and deeper connections.",
+      "zh": "强化竞赛解题速度、结构思维与专题联结。"
+    },
+    "official": "https://maa.org/student-programs/amc/",
+    "archive": "https://maa.org/student-programs/amc/information-for-students-and-parents/",
+    "examples": [
+      "c01",
+      "p05",
+      "t02",
+      "p03"
+    ],
+    "symbol": "10",
+    "accent": "blue"
+  },
+  {
+    "id": "amc12",
+    "country": "us",
+    "name": "AMC 12",
+    "full": {
+      "en": "American Mathematics Competitions 12",
+      "zh": "美国数学竞赛 AMC 12"
+    },
+    "organizer": {
+      "en": "Mathematical Association of America",
+      "zh": "美国数学协会"
+    },
+    "level": {
+      "en": "Senior secondary",
+      "zh": "高中高年级"
+    },
+    "format": "choice",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics",
+      "geometry"
+    ],
+    "difficulty": "challenge",
+    "description": {
+      "en": "Study multi-step competition reasoning across core topics.",
+      "zh": "练习跨专题、多步骤的竞赛数学推理。"
+    },
+    "official": "https://maa.org/student-programs/amc/",
+    "archive": "https://maa.org/student-programs/amc/information-for-students-and-parents/",
+    "examples": [
+      "p04",
+      "e01",
+      "t02",
+      "p05"
+    ],
+    "symbol": "12",
+    "accent": "purple"
+  },
+  {
+    "id": "aime",
+    "country": "us",
+    "name": "AIME",
+    "full": {
+      "en": "American Invitational Mathematics Examination",
+      "zh": "美国数学邀请赛"
+    },
+    "organizer": {
+      "en": "Mathematical Association of America",
+      "zh": "美国数学协会"
+    },
+    "level": {
+      "en": "Advanced secondary",
+      "zh": "高中竞赛进阶"
+    },
+    "format": "integer",
+    "topics": [
+      "number",
+      "algebra",
+      "combinatorics",
+      "geometry"
+    ],
+    "difficulty": "challenge",
+    "description": {
+      "en": "Integer-answer problems demanding sustained reasoning.",
+      "zh": "以整数答案题为主，强调持续的多步推理。"
+    },
+    "official": "https://maa.org/student-programs/amc/",
+    "archive": "https://maa.org/student-programs/amc/information-for-students-and-parents/",
+    "examples": [
+      "p04",
+      "p03",
+      "p05",
+      "e01"
+    ],
+    "symbol": "∴",
+    "accent": "teal"
+  }
+];
+
+</script>
+  <script>
+/* Olympiad Proof Clinic — interactive, privacy-friendly Phase 1 frontend.
+ * No AI, analytics, logins or network requests are made by this script.
+ */
+(() => {
+  'use strict';
+  const problems = window.CLINIC_DATA || [];
+  const contests = window.CLINIC_CONTESTS || [];
+  const MAX_CHARS = 5000;
+  const $app = document.getElementById('app');
+  const tr = {
+    en: {
+      brandSub:'MATHEMATICAL REASONING',home:'Home',problems:'Problems',competitions:'Competition Hub',practice:'Practice',skills:'Proof Skills',topics:'Topics',about:'About',
+      studyGuide:'Study Guide',grade7:'Grade 7',grade8:'Grade 8',grade9:'Grade 9',grade10:'Grade 10',grade11:'Grade 11',grade12:'Grade 12',college:'University Intro',
+      aboutMission:'Our Mission',team:'Team',difficulty:'Difficulty',level:'Level',language:'Language',demo:'INTERACTIVE PROTOTYPE',phase:'BETA / 1.5',sectionPractice:'01 / PRACTICE SPACE',sectionLibrary:'LIBRARY',sectionSkills:'LEARN / 01',sectionTopics:'CURRICULUM / GUIDE',sectionAbout:'ABOUT / THE PROJECT',sectionMission:'01 / MISSION',sectionTeam:'02 / TEAM',sectionPrivacy:'03 / PRIVACY',sectionLimits:'04 / LIMITS',offline:'Free demo · No AI API',
+      heroEyebrow:'OLYMPIAD PROOF CLINIC',heroA:'Think.',heroB:'Prove.',heroC:'Refine.',
+      heroDesc:'Train mathematical reasoning, not just answers. Explore proofs, find counterexamples, and improve every step.',
+      start:'Start Practicing',browse:'Explore Problems',scroll:'SCROLL TO EXPLORE',mathTip:'Move over the points',mathLabel:'REASONING, MADE VISIBLE',
+      kindProof:'Proof',kindCounterexample:'Counterexample',kindExample:'Example',kindTruefalse:'True or False',
+      kindDescProof:'Build a rigorous argument.',kindDescCounterexample:'Disprove a claim with one case.',kindDescExample:'Construct an illuminating case.',kindDescTruefalse:'Decide and justify.',
+      exploreEyebrow:'A PRACTICE LIBRARY',exploreTitle:'Four paths. One mindset.',exploreDesc:'Choose a type of reasoning, then work through a curated challenge.',
+      topicNumber:'Number Theory',topicAlgebra:'Algebra',topicComb:'Combinatorics',topicGeometry:'Geometry',topicNumberDesc:'Parity, primes, divisibility',topicAlgebraDesc:'Identities and inequalities',topicCombDesc:'Counting and structure',topicGeometryDesc:'Shapes and constructions',
+      goTopic:'Explore topic',howTitle:'Your learning loop',step1:'Explore',step2:'Reason',step3:'Refine',step1desc:'Pick a challenge that fits your level.',step2desc:'Write your argument in your own words.',step3desc:'Use hints and revise your work.',
+      logicEyebrow:'INTERACTIVE MATHEMATICS',logicTitle:'Logic you can touch.',logicDesc:'Select a logical form. Watch the relationship change—and remember that a converse need not follow from the original.',
+      logicOriginal:'Original',logicConverse:'Converse',logicContrapositive:'Contrapositive',logicCaptionOriginal:'If P, then Q.',logicCaptionConverse:'If Q, then P. Not generally equivalent.',logicCaptionContrapositive:'If not Q, then not P. Equivalent to the original.',
+      disclaimer:'Demo feedback never certifies mathematical correctness.',built:'Made for curious minds.',
+      libraryTitle:'Problem Library',libraryDesc:'Proofs, counterexamples, examples, and truth-value questions. All curated for this local demo.',search:'Search problems',allKinds:'All task types',allTopics:'All topics',
+      open:'Open problem',items:'problems',noResults:'No problems match these filters.',
+      workspaceTitle:'Reasoning Workspace',workspaceDesc:'Choose a challenge, write your reasoning, and revise. The local demo does not grade correctness.',
+      taskType:'Task type',problem:'Problem',yourWork:'Your reasoning',inputHelp:'Write in your own words. Mathematical notation is welcome.',inputPlaceholder:'Write your reasoning here... You can type symbols or use the toolbar below.',
+      hint:'Hints',commonMistakes:'Common mistakes',reference:'Reference solution',refNotice:'Reveal only after your own attempt. Other valid arguments may exist.',related:'Related skills',
+      review:'Review my work',clear:'Clear',feedback:'Review feedback',feedbackEmpty:'No review yet',feedbackEmptyDesc:'Submit your work to see transparent local-demo guidance. No correctness check is performed.',
+      feedbackStatus:'Needs Human Review',feedbackIssue:'Suspected issue',feedbackStep:'Problematic step',feedbackExplanation:'Explanation',feedbackHint:'Next hint',feedbackNotice:'Local demonstration only. No logical validity, truth, or completeness has been evaluated. A human should review this work.',
+      shortIssue:'Possibly under-explained (length only)',shortExpl:'Your answer is short. Check that you stated the assumptions and justified the critical step. A concise answer may still be entirely correct.',
+      longIssue:'Not assessed',longExpl:'Your submission was received. This demo cannot identify logical errors. Compare your reasoning with the hints and reference solution.',noStep:'No specific step identified in demo mode',
+      attempts:'Submissions this session',emptyError:'Please write something before submitting.',longError:'Please keep your response within 5,000 characters.',saved:'Demo feedback generated. You can revise and submit again.',
+      skillTitle:'Proof Skills',skillDesc:'Learn the moves behind rigorous arguments. Explore the logical relationships interactively.',skill1:'Contradiction',skill1desc:'Assume the opposite and derive an impossibility.',skill2:'Induction',skill2desc:'Verify the base and move from k to k+1.',skill3:'Parity',skill3desc:'Separate even and odd cases.',skill4:'Counterexample',skill4desc:'One carefully chosen case can refute a universal statement.',
+      topicsTitle:'Learning Paths',topicsDesc:'Representative study topics by school year. These are guidance, not predictions of any particular exam.',
+      aboutTitle:'Built for better thinking.',aboutDesc:'Olympiad Proof Clinic is a learning experiment focused on mathematical reasoning. We help students locate questions to ask about their own arguments—not merely collect answers.',
+      mission:'Our mission',missionText:'Think clearly. Explain precisely. Revise confidently. The platform emphasizes the process of building a mathematical argument.',
+      teamTitle:'The team',teamText:'An independent undergraduate project initiated by a University of Toronto student. Mathematical examples are prepared and reviewed for this educational prototype; no larger team is claimed.',
+      privacy:'Privacy & honesty',privacyText:'This standalone preview runs locally in your browser. No account, AI API, analytics, or uploaded proof storage. Text remains in the page memory until it is closed or refreshed.',
+      faq:'Current limitations',faqText:'This is an interactive Phase 1 demo, not an automatic theorem prover. Its feedback uses a simple length heuristic only and never confirms correctness.',
+      selectGrade:'Select a school level',gradeTopics:'Practice focus',noGrade:'Choose a grade to view skills.',
+      categories:'Topics',toggleNav:'Open navigation',closeNav:'Close navigation',backLibrary:'Back to library',prev:'Previous',next:'Next',
+      difficultyFoundation:'Foundation',difficultyCore:'Intermediate',difficultyChallenge:'Challenge',
+      middle:'Middle school',high:'High school',university:'University',all:'All',activeLanguage:'English',
+      compEyebrow:'NORTH AMERICAN MATH CONTESTS',compTitle:'Train for the challenge.',compSubtitle:'Explore competitions, build reasoning skills, and practice with original problems. Official archives open on the organizers’ websites.',
+      compAll:'All contests',compCanada:'Canada',compUSA:'United States',compSearch:'Find a competition',compTopic:'Topic focus',compFormat:'Answer format',compAllFormats:'Any format',compFormatChoice:'Multiple choice',compFormatMixed:'Short & full solution',compFormatWritten:'Written reasoning',compFormatInteger:'Integer answer',compClear:'Reset filters',compCount:'competitions',compEmpty:'No competitions match your selection.',compExplore:'Explore competition',
+      compPractice:'Original practice',compPracticeDesc:'Independent reasoning exercises connected to each competition’s themes. These are not real or reproduced contest questions.',compNotice:'Original examples only. No claim of affiliation or endorsement by competition organizers.',compOriginal:'ORIGINAL · CONTEST PREPARATION',compReturn:'All competitions',compOrganized:'Organizer',compAudience:'Audience',compOfficial:'Official competition site',compArchive:'Past papers & archives',compArchiveNote:'Browse years on the organizer’s website. Historical contest papers are not copied into this demo.',compStart:'Try this exercise',compSampleCount:'original exercises',compBrowse:'Explore all competitions',compHomeLine:'Canada · United States · Competition pathways',compHomeDesc:'Prepare for COMC, CSMC, Euclid, AMC and more—through original reasoning exercises and links to official resources.',compViewHub:'Explore Competition Hub',compCopyright:'Competition names are for reference only. This independent demo is not affiliated with the organizers.',compFormats:'Format',compFocus:'Focus',compBack:'Back to Competition Hub',compLocalNote:'Original site exercise · not an official competition problem',compOfficialLink:'Open official archive',compMore:'Competition pathways',compMoreDesc:'Find the next challenge that fits your mathematics journey.'
+    },
+    zh: {
+      brandSub:'数学推理训练',home:'首页',problems:'题库',competitions:'竞赛专区',practice:'推理训练',skills:'证明方法',topics:'学习路径',about:'关于项目',
+      studyGuide:'年级导航',grade7:'七年级',grade8:'八年级',grade9:'九年级',grade10:'高一',grade11:'高二',grade12:'高三',college:'大学入门',
+      aboutMission:'项目初衷',team:'制作团队',difficulty:'难度',level:'适合阶段',language:'语言',demo:'交互式概念原型',phase:'内测 / 1.5',sectionPractice:'01 / 训练空间',sectionLibrary:'题库',sectionSkills:'01 / 证明技巧',sectionTopics:'学习路径',sectionAbout:'关于项目',sectionMission:'01 / 初衷',sectionTeam:'02 / 团队',sectionPrivacy:'03 / 隐私',sectionLimits:'04 / 局限',offline:'免费演示 · 无 AI 调用',
+      heroEyebrow:'OLYMPIAD PROOF CLINIC',heroA:'思考。',heroB:'论证。',heroC:'精进。',
+      heroDesc:'不止于答案。练习数学证明、寻找反例（Counterexample），让每一步推理更严谨。',
+      start:'开始练习',browse:'浏览题库',scroll:'向下探索',mathTip:'将鼠标移至节点',mathLabel:'让逻辑变得可见',
+      kindProof:'证明',kindCounterexample:'反例',kindExample:'举例',kindTruefalse:'判断真伪',
+      kindDescProof:'构建严谨的证明（Proof）。',kindDescCounterexample:'用一个反例推翻命题。',kindDescExample:'构造满足条件的例子。',kindDescTruefalse:'判断命题真假并说明理由。',
+      exploreEyebrow:'数学推理题库',exploreTitle:'四种题型，同一种思考。',exploreDesc:'选择你想练习的推理方式，尝试精心整理的数学题。',
+      topicNumber:'数论',topicAlgebra:'代数',topicComb:'组合数学',topicGeometry:'几何',topicNumberDesc:'奇偶、质数、整除',topicAlgebraDesc:'恒等式与不等式',topicCombDesc:'计数与结构',topicGeometryDesc:'图形与构造',
+      goTopic:'浏览专题',howTitle:'从尝试到进步',step1:'选题',step2:'推理',step3:'修正',step1desc:'选择适合自己的题目。',step2desc:'独立组织并写出论证。',step3desc:'参考提示，继续完善。',
+      logicEyebrow:'交互数学',logicTitle:'让逻辑可以互动。',logicDesc:'切换不同的逻辑形式，观察命题关系。请注意：逆命题并不总与原命题等价。',
+      logicOriginal:'原命题',logicConverse:'逆命题',logicContrapositive:'逆否命题',logicCaptionOriginal:'若 P，则 Q。',logicCaptionConverse:'若 Q，则 P。通常不与原命题等价。',logicCaptionContrapositive:'若非 Q，则非 P。与原命题等价。',
+      disclaimer:'演示反馈不代表数学正确性验证。',built:'献给热爱思考的人。',
+      libraryTitle:'数学题库',libraryDesc:'包含证明、反例、举例和判断真伪。所有内容均为本地演示题。',search:'搜索题目',allKinds:'全部题型',allTopics:'全部专题',
+      open:'开始做题',items:'道题',noResults:'没有符合筛选条件的题目。',
+      workspaceTitle:'推理训练工作区',workspaceDesc:'选择题目，写出你的思路，再根据提示反复修改。本地版本不会判定对错。',
+      taskType:'题型',problem:'题目',yourWork:'你的论证',inputHelp:'用自己的语言解释推理。可输入数学符号。',inputPlaceholder:'在这里写出你的论证……也可以使用下方的数学符号。',
+      hint:'提示',commonMistakes:'常见错误',reference:'参考解答',refNotice:'建议先独立尝试再查看。正确解法可能不止一种。',related:'相关技巧',
+      review:'查看演示反馈',clear:'清空',feedback:'演示反馈',feedbackEmpty:'还没有反馈',feedbackEmptyDesc:'提交你的思路后可查看本地示范提示。此版本不判断数学对错。',
+      feedbackStatus:'需要人工复核',feedbackIssue:'可能的问题',feedbackStep:'问题步骤',feedbackExplanation:'说明',feedbackHint:'下一步提示',feedbackNotice:'仅供本地演示：未评估逻辑有效性、命题真假或证明完整性。仍需人工复核。',
+      shortIssue:'可能需要更多解释（仅根据长度）',shortExpl:'这份论证比较简短，请检查假设是否明确、关键步骤是否有理由。简短的答案也可能完全正确。',
+      longIssue:'尚未检测数学正确性',longExpl:'已经收到你的论证。演示版无法定位逻辑漏洞；你可以对照提示和参考解答自行检查。',noStep:'演示模式没有定位具体步骤',
+      attempts:'本次会话提交次数',emptyError:'请先输入你的论证。',longError:'输入请控制在 5000 字符以内。',saved:'演示反馈已生成。你可以修改后再次提交。',
+      skillTitle:'证明方法',skillDesc:'认识严谨论证背后的基本技巧，并通过交互图形学习逻辑关系。',skill1:'反证法（Contradiction）',skill1desc:'先假设结论不成立，再推导出矛盾。',skill2:'数学归纳法（Induction）',skill2desc:'验证初始情况，再完成从 k 到 k+1 的推导。',skill3:'奇偶性（Parity）',skill3desc:'根据奇数与偶数分类讨论。',skill4:'反例（Counterexample）',skill4desc:'一个精确的例子就能否定全称命题。',
+      topicsTitle:'学习路径',topicsDesc:'按年级整理常见训练知识点，仅供学习规划参考，并非特定考试预测。',
+      aboutTitle:'让思考更严谨。',aboutDesc:'Olympiad Proof Clinic 是一个面向数学推理学习的独立项目。我们的关注点是帮助学生理解自己的论证，而不仅是得到答案。',
+      mission:'项目初衷',missionText:'清晰思考，严谨表达，持续完善。我们希望让学习者真正掌握数学论证的过程。',
+      teamTitle:'制作团队',teamText:'这是由多伦多大学本科生发起的独立项目。演示中的数学内容经过整理与审核；目前不对外宣称存在大型开发团队。',
+      privacy:'隐私与透明度',privacyText:'独立网页预览只在本地浏览器运行，没有账户、AI API、分析服务或证明上传功能。输入仅暂存在当前页面，刷新后会清除。',
+      faq:'当前局限',faqText:'这只是 Phase 1 交互原型，并非自动证明验证器。反馈仅使用简单的长度启发，不会判定证明是否正确。',
+      selectGrade:'选择年级',gradeTopics:'练习重点',noGrade:'选择年级以查看专题。',
+      categories:'数学专题',toggleNav:'打开导航',closeNav:'关闭导航',backLibrary:'返回题库',prev:'上一题',next:'下一题',
+      difficultyFoundation:'基础',difficultyCore:'进阶',difficultyChallenge:'挑战',
+      middle:'初中',high:'高中',university:'大学',all:'全部',activeLanguage:'中文',
+      compEyebrow:'北美数学竞赛',compTitle:'迎接下一道挑战。',compSubtitle:'探索不同竞赛，练习数学推理，并通过原创习题准备。官方历年真题请前往主办方网站。',
+      compAll:'全部竞赛',compCanada:'加拿大',compUSA:'美国',compSearch:'搜索竞赛',compTopic:'知识专题',compFormat:'答题形式',compAllFormats:'全部形式',compFormatChoice:'选择题',compFormatMixed:'简答与完整解答',compFormatWritten:'书面论证',compFormatInteger:'整数答案',compClear:'重置筛选',compCount:'项竞赛',compEmpty:'没有符合筛选条件的竞赛。',compExplore:'进入专区',
+      compPractice:'原创训练题',compPracticeDesc:'与竞赛考查的数学思维相关的独立原创习题，不是官方真题或转载试题。',compNotice:'仅供竞赛备考的原创示例。本平台与竞赛主办方无隶属、合作或背书关系。',compOriginal:'原创练习 · 竞赛备考',compReturn:'全部竞赛',compOrganized:'主办方',compAudience:'适合人群',compOfficial:'官方竞赛页面',compArchive:'历年真题与档案',compArchiveNote:'请在主办方网站选择年份。目前演示版不复制历年竞赛原题。',compStart:'开始练习',compSampleCount:'道原创练习',compBrowse:'浏览所有竞赛',compHomeLine:'加拿大 · 美国 · 竞赛训练',compHomeDesc:'面向 COMC、CSMC、Euclid、AMC 等竞赛，提供原创推理练习与官方资料入口。',compViewHub:'探索竞赛专区',compCopyright:'竞赛名称仅用于资料索引。本站为独立演示项目，与主办方无隶属关系。',compFormats:'答题形式',compFocus:'主要专题',compBack:'返回竞赛专区',compLocalNote:'站内原创练习 · 非官方竞赛原题',compOfficialLink:'打开官方档案',compMore:'竞赛学习路径',compMoreDesc:'找到与你当前水平相匹配的下一道挑战。'
+    }
+  };
+  const study = {
+    g7:{en:['Integer operations and divisibility','Basic prime numbers and factors','Simple examples and counterexamples'],zh:['整数运算与整除（Divisibility）','质数与因数（Prime numbers）','举例与反例（Counterexample）']},
+    g8:{en:['Algebraic identities','Even and odd numbers','Direct proof and pattern recognition'],zh:['代数恒等式（Identities）','奇偶性（Parity）','直接证明与规律归纳']},
+    g9:{en:['Modular arithmetic basics','Quadratic expressions','Universal statements and counterexamples'],zh:['初等同余（Modular arithmetic）','二次代数式','全称命题与反例']},
+    g10:{en:['Inequalities and equality cases','Induction basics','Casework and divisibility'],zh:['不等式及等号条件（Inequalities）','数学归纳法（Induction）','分类讨论与整除']},
+    g11:{en:['Pigeonhole principle','Combinatorial construction','Proof by contradiction'],zh:['抽屉原理（Pigeonhole Principle）','组合构造（Construction）','反证法（Contradiction）']},
+    g12:{en:['Invariants and extremal ideas','Advanced number theory reasoning','Functional-equation approaches'],zh:['不变量与极值思想（Invariants）','进阶数论推理','函数方程入门（Functional equations）']},
+    college:{en:['Quantifiers and logical equivalence','Induction and rigorous definitions','Proof techniques and elementary analysis'],zh:['量词与逻辑等价（Quantifiers）','数学归纳法与严格定义','证明技巧与初等分析']}
+  };
+  const kinds=['proof','counterexample','example','truefalse'];
+  const topics=['number','algebra','combinatorics','geometry'];
+  let savedLanguage='en';
+  try { savedLanguage=localStorage.getItem('opc_language')==='zh'?'zh':'en'; } catch (_) {}
+  const state={
+    lang:savedLanguage,page:'home',problemId:'p03',
+    kind:'proof',topic:'all',kindFilter:'all',diffFilter:'all',search:'',grade:'g10',logic:'original',
+    compCountry:'all',compTopic:'all',compFormat:'all',compSearch:'',contestId:'comc',contestContext:null,
+    drafts:{},attempts:{},mobileMenu:false,notice:''
+  };
+  const L=()=>tr[state.lang];
+  const txt=(key)=>L()[key]||key;
+  const escape=(s)=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const iconPaths={
+    home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',
+    trophy:'<path d="M8 21h8m-4-4v4M7 4h10v6a5 5 0 0 1-10 0V4Z"/><path d="M7 6H3v2a5 5 0 0 0 5 5M17 6h4v2a5 5 0 0 1-5 5"/>',
+    book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+    pen:'<path d="m12 19 7-7 3 3-7 7-6 1z"/><path d="m15 5 4-4 4 4-4 4" transform="translate(-3 3)"/><path d="M2 8h8"/>',
+    layers:'<path d="m12 2 10 5-10 5L2 7z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/>',
+    grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/>',
+    chart:'<path d="M4 20v-6m6 6V9m6 11V5m4 15V3"/>',
+    chev:'<path d="m6 9 6 6 6-6"/>',
+    arrow:'<path d="M4 12h15m-6-6 6 6-6 6"/>',
+    down:'<path d="m6 9 6 6 6-6"/>',
+    search:'<circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/>',
+    lamp:'<path d="M9 18h6m-5 4h4m-6-8a7 7 0 1 1 8 0c-1 1-1 2-1 3H9c0-1 0-2-1-3z"/>',
+    warning:'<path d="m12 3 10 18H2z"/><path d="M12 9v5m0 3h.01"/>',
+    spark:'<path d="m12 2 1.5 7L21 12l-7.5 3L12 22l-1.5-7L3 12l7.5-3z"/>',
+    check:'<path d="m4 12 5 5L20 6"/>',
+    x:'<path d="M6 6l12 12M18 6 6 18"/>',
+    menu:'<path d="M3 6h18M3 12h18M3 18h18"/>',
+    left:'<path d="m15 18-6-6 6-6"/>',right:'<path d="m9 18 6-6-6-6"/>',
+    mouse:'<rect x="7" y="2" width="10" height="19" rx="5"/><path d="M12 6v4"/>',
+    target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c5 5 5 15 0 20M12 2c-5 5-5 15 0 20"/>',
+    grad:'<path d="m2 10 10-6 10 6-10 6zM6 13v5c4 3 8 3 12 0v-5M22 10v7"/>',
+    box:'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 10h18M10 3v18"/>',
+    link:'<path d="m10 13 4-4m-6 9H6a4 4 0 0 1 0-8h4m4-4h4a4 4 0 0 1 0 8h-4"/>',
+    triangle:'<path d="M12 3 2 21h20z"/>',
+    file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/>'
+  };
+  function ic(name,cls=''){return `<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidden="true">${iconPaths[name]||iconPaths.info}</svg>`;}
+  function difficultyLabel(id){return txt(({foundation:'difficultyFoundation',core:'difficultyCore',challenge:'difficultyChallenge'})[id]);}
+  function kindLabel(kind){return txt(({proof:'kindProof',counterexample:'kindCounterexample',example:'kindExample',truefalse:'kindTruefalse'})[kind]);}
+  function topicLabel(k){return txt(({number:'topicNumber',algebra:'topicAlgebra',combinatorics:'topicComb',geometry:'topicGeometry'})[k]);}
+  function diffClass(d){return d==='foundation'?'teal':d==='core'?'amber':'coral';}
+  function getProblem(){return problems.find(p=>p.id===state.problemId)||problems[0];}
+  function footer(){return `<div class="footer"><span>© Olympiad Proof Clinic · Beta 1.5</span><span>${escape(txt('disclaimer'))}</span></div>`;}
+  function sidebar(){
+    const nav=[['home','home','home'],['problems','book','problems'],['competitions','trophy','competitions'],['practice','pen','practice'],['skills','layers','skills'],['topics','grid','topics'],['about','info','about']];
+    return `<aside class="sidebar ${state.mobileMenu?'open':''}" id="sidebar" aria-label="${escape(txt('categories'))}">
+      <div class="brand"><div class="brand-mark" aria-hidden="true">π</div><div><div class="brand-name"><span>Olympiad</span><span>Proof Clinic</span></div><div class="brand-sub">${escape(txt('brandSub'))}</div></div></div>
+      <nav class="nav-list">${nav.map(([key,ico,page])=>`<button type="button" class="nav ${state.page===page?'active':''}" data-page="${page}" ${state.page===page?'aria-current="page"':''}>${ic(ico)}<span>${escape(txt(key))}</span></button>`).join('')}</nav>
+      <div class="side-rule"></div><div class="side-label">${escape(txt('studyGuide'))}</div>
+      <div class="side-details"><details open><summary>${ic('grad','tiny')} ${escape(txt('level'))}${ic('chev','tiny')}</summary>
+         ${Object.keys(study).map(g=>`<button class="sub-link" data-grade="${g}" type="button"><span class="dot" style="background:${g==='college'?'#8b7cf1':g==='g7'||g==='g8'||g==='g9'?'#33c7bb':'#f2b94b'}"></span>${escape(txt(g==='college'?'college':'grade'+g.slice(1)))}</button>`).join('')}</details>
+       <details><summary>${ic('chart','tiny')} ${escape(txt('difficulty'))}${ic('chev','tiny')}</summary>
+        ${['foundation','core','challenge'].map(d=>`<button class="sub-link" data-difficulty="${d}" type="button"><span class="dot" style="background:${d==='foundation'?'#3bc6a6':d==='core'?'#f1b44b':'#f17882'}"></span>${escape(difficultyLabel(d))}</button>`).join('')}</details>
+       <details><summary>${ic('info','tiny')} ${escape(txt('about'))}${ic('chev','tiny')}</summary><button class="sub-link" data-about="mission" type="button">${escape(txt('aboutMission'))}</button><button class="sub-link" data-about="team" type="button">${escape(txt('team'))}</button></details></div>
+      <div class="side-footer"><div class="lang-pill" role="group" aria-label="Language / 语言"><button type="button" class="${state.lang==='en'?'selected':''}" data-lang="en" aria-pressed="${state.lang==='en'}">English</button><button type="button" class="${state.lang==='zh'?'selected':''}" data-lang="zh" aria-pressed="${state.lang==='zh'}">中文</button></div><div class="side-note">${escape(txt('offline'))}</div></div>
+    </aside>`;
+  }
+  function topbar(){const title=state.page==='home'?'home':state.page==='competition'?'competitions':state.page;return `<header class="topbar"><div class="crumb"><button class="menu-toggle" data-menu="toggle" aria-label="${escape(txt('toggleNav'))}">${ic('menu','big')}</button>${ic('grid','tiny')} <span>Olympiad Proof Clinic</span><span>/</span><strong>${escape(txt(title))}</strong></div><div class="top-actions"><span class="tiny-label">${escape(txt('phase'))}</span><span class="chip-neutral">${escape(txt('demo'))}</span></div></header>`;}
+  function mathVisual(){
+    return `<div class="math-canvas" id="math-canvas" aria-label="Interactive geometric reasoning visualization">
+      <svg viewBox="0 0 520 390" role="img" aria-label="Triangle and connected points respond to pointer movement">
+       <defs><linearGradient id="gline" x1="0" x2="1"><stop stop-color="#4f78f0"/><stop offset="1" stop-color="#a66ce9"/></linearGradient><radialGradient id="ghalo"><stop stop-color="#8989ff" stop-opacity=".17"/><stop offset="1" stop-color="#8989ff" stop-opacity="0"/></radialGradient></defs>
+       <circle cx="277" cy="194" r="153" fill="url(#ghalo)"/><circle cx="277" cy="194" r="129" fill="none" stroke="#8ba8ea" stroke-opacity=".22"/><circle cx="277" cy="194" r="90" fill="none" stroke="#8ba8ea" stroke-opacity=".22"/>
+       <path d="M90 312 274 48 443 308Z" fill="#a4bef5" fill-opacity=".07" stroke="url(#gline)" stroke-width="2.5"/><path d="M90 312 346 160 443 308 274 48 220 220 443 308" stroke="#8e9fe2" stroke-width="1.5" fill="none" stroke-dasharray="4 7" opacity=".8"/>
+       <path d="M90 312 346 160M220 220 274 48M220 220 346 160M90 312 220 220M220 220 443 308" stroke="url(#gline)" stroke-opacity=".48" stroke-width="1.3" fill="none"/>
+       <line id="pointer-line" x1="220" y1="220" x2="220" y2="220" stroke="#6d5bef" opacity="0" stroke-width="1.6" stroke-dasharray="3 4"/><circle id="pointer-dot" cx="220" cy="220" r="5" fill="#725ce9" opacity="0"/>
+       ${[[90,312,'A'],[274,48,'P'],[443,308,'Q'],[220,220,'R'],[346,160,'S']].map(([x,y,label])=>`<g class="math-node" data-mathpoint="${label}" tabindex="0" role="button" aria-label="Point ${label}"><circle cx="${x}" cy="${y}" r="12" fill="#7160db" fill-opacity=".1"/><circle cx="${x}" cy="${y}" r="5.5" fill="white" stroke="#6573dd" stroke-width="2.5"/><text x="${x+10}" y="${y-12}" fill="#5a6597" font-family="Georgia" font-style="italic" font-size="15">${label}</text></g>`).join('')}
+       <text x="145" y="139" font-family="Georgia" font-style="italic" font-size="29" fill="#747fc4" opacity=".65">∀</text><text x="379" y="94" font-family="Georgia" font-style="italic" font-size="26" fill="#7a75c8" opacity=".53">∃</text><text x="410" y="236" font-family="Georgia" font-style="italic" font-size="30" fill="#7f7fc9" opacity=".62">⇒</text>
+      </svg><div class="math-tip" id="math-tip">${escape(txt('mathTip'))}</div><div class="math-bottom-label">${escape(txt('mathLabel'))}</div></div>`;
+  }
+  function featureCard(kind,klass,icon){return `<button type="button" class="feature-card ${klass}" data-kind="${kind}"><span class="card-arrow">${ic('arrow','tiny')}</span><div class="feature-icon">${ic(icon,'big')}</div><h3>${escape(kindLabel(kind))}</h3><p>${escape(txt('kindDesc'+({proof:'Proof',counterexample:'Counterexample',example:'Example',truefalse:'Truefalse'})[kind]))}</p></button>`;}
+  function topicCard(k,ornament){return `<button class="topic-card" data-topic="${k}"><div class="topic-ornament" aria-hidden="true">${ornament}</div><div><h3>${escape(topicLabel(k))}</h3><p>${escape(txt('topic'+({number:'Number',algebra:'Algebra',combinatorics:'Comb',geometry:'Geometry'})[k]+'Desc'))}</p><div class="linkline">${escape(txt('goTopic'))} ${ic('arrow','tiny')}</div></div></button>`;}
+  function logicControl(){return `<div class="logic-box"><div class="logic-switch" role="group" aria-label="Logic forms">${['original','converse','contrapositive'].map(k=>`<button type="button" class="${state.logic===k?'active':''}" data-logic="${k}" aria-pressed="${state.logic===k}">${escape(txt('logic'+k.charAt(0).toUpperCase()+k.slice(1)))}</button>`).join('')}</div><div class="logic-visual"><div class="logic-symbol" id="logic-from"></div><span class="logic-arrow">⇒</span><div class="logic-symbol" id="logic-to"></div></div><div class="logic-caption" id="logic-caption"></div></div>`;}
+  function home(){return `<div class="home-page">
+    <section class="hero-panel section-snap" id="hero"><div class="hero-grid"><div><div class="eyebrow">${escape(txt('heroEyebrow'))}</div><h1 class="hero-title ${state.lang==='zh'?'hero-zh':''}">${escape(txt('heroA'))}<br>${escape(txt('heroB'))}<br><span class="accent">${escape(txt('heroC'))}</span></h1><p class="hero-intro">${escape(txt('heroDesc'))}</p><div class="cta-row"><button class="btn btn-primary" data-page="practice">${ic('pen')} ${escape(txt('start'))} ${ic('arrow')}</button><button class="btn btn-outline" data-page="problems">${ic('book')} ${escape(txt('browse'))}</button></div></div>${mathVisual()}</div>
+    <div class="feature-grid">${featureCard('proof','','file')}${featureCard('counterexample','coral','x')}${featureCard('example','teal','link')}${featureCard('truefalse','amber','info')}</div><button class="scroll-cue" data-scroll="explore">${ic('mouse')}<span>${escape(txt('scroll'))}</span>${ic('down','tiny')}</button></section>
+    <section class="home-section section-snap" id="explore"><div class="section-kicker">${escape(txt('exploreEyebrow'))}</div><div class="section-head"><div><h2 class="section-title">${escape(txt('exploreTitle'))}</h2><p class="section-desc">${escape(txt('exploreDesc'))}</p></div><button class="btn btn-outline btn-small" data-page="problems">${escape(txt('browse'))}${ic('arrow','tiny')}</button></div>
+      <div class="topic-grid">${topicCard('number','∑')}${topicCard('combinatorics','◇')}${topicCard('algebra','x²')}${topicCard('geometry','△')}</div>
+      <div class="competition-home-strip"><div class="strip-icon">${ic('trophy','big')}</div><div class="strip-copy"><strong>${escape(txt('compMore'))}</strong><p>${escape(txt('compHomeDesc'))}</p></div><button class="btn btn-primary btn-small" data-page="competitions">${escape(txt('compViewHub'))} ${ic('arrow','tiny')}</button></div>
+      <div class="section-head" style="margin-top:49px;margin-bottom:0"><h2 class="section-title" style="font-size:28px">${escape(txt('howTitle'))}</h2></div>
+      <div class="process">${[1,2,3].map(i=>`<div class="process-step"><div class="count">0${i}</div><h3>${escape(txt('step'+i))}</h3><p>${escape(txt('step'+i+'desc'))}</p></div>`).join('')}</div></section>
+    <section class="home-section section-snap showcase" id="interact"><div class="section-kicker">${escape(txt('logicEyebrow'))}</div><div class="logic-demo"><div><h2 class="section-title">${escape(txt('logicTitle'))}</h2><p class="section-desc">${escape(txt('logicDesc'))}</p><button class="btn btn-primary" style="margin-top:14px" data-page="skills">${escape(txt('skills'))} ${ic('arrow')}</button></div>${logicControl()}</div>${footer()}</section>
+  </div>`;}
+  function selectKindBar(){return `<div class="logic-switch" style="margin-bottom:18px" role="group" aria-label="${escape(txt('taskType'))}">${kinds.map(k=>`<button type="button" class="${state.kind===k?'active':''}" data-kind="${k}" aria-pressed="${state.kind===k}">${escape(kindLabel(k))}</button>`).join('')}</div>`;}
+  function accordion(name,title,body,extra=''){return `<details class="accordion" ${extra}><summary>${ic(name)}<span>${escape(title)}</span>${ic('chev','tiny chev')}</summary><div class="accordion-content">${body}</div></details>`;}
+  function practice(){
+    const p=getProblem(), ls=state.lang;
+    const contextContest=contests.find(c=>c.id===state.contestContext);
+    const suggested=contextContest ? problems.filter(x=>x.kind===p.kind && contextContest.examples.includes(x.id)) : [];
+    const taskList=suggested.length?suggested:problems.filter(x=>x.kind===p.kind),idx=Math.max(0,taskList.findIndex(x=>x.id===p.id));
+    const history=state.attempts[p.id]||[],latest=history.at(-1);
+    return `<div class="app-page"><div class="body-padding"><div class="page-header"><div class="section-kicker">${escape(txt('sectionPractice'))}</div><h1 class="page-title">${escape(txt('workspaceTitle'))}</h1><p class="page-sub">${escape(txt('workspaceDesc'))}</p></div>${selectKindBar()}
+      <div class="workspace-grid"><section class="panel panel-pad" aria-label="${escape(txt('problem'))}">
+        <div class="panel-heading"><span class="label-small">${escape(txt('problem'))} #${escape(p.id.toUpperCase())}</span><div class="pager"><span class="current">${idx+1} / ${taskList.length}</span><button title="${escape(txt('prev'))}" aria-label="${escape(txt('prev'))}" data-problem="${taskList[(idx-1+taskList.length)%taskList.length].id}">${ic('left')}</button><button title="${escape(txt('next'))}" aria-label="${escape(txt('next'))}" data-problem="${taskList[(idx+1)%taskList.length].id}">${ic('right')}</button></div></div>
+        <h2 class="problem-title">${escape(p.title[ls])}</h2><div class="meta-chips"><span class="tag">${escape(topicLabel(p.topic))}</span><span class="tag ${diffClass(p.difficulty)}">${escape(difficultyLabel(p.difficulty))}</span><span class="tag violet">${escape(txt(p.level==='college'?'college':'grade'+p.level.slice(1)))}</span></div>
+        <div class="math-statement">${escape(p.statement[ls])}</div>${contextContest?`<div class="contest-context-note">${ic('trophy','tiny')} ${escape(contextContest.name)} · ${escape(txt('compLocalNote'))} <button class="text-link" data-contest="${escape(contextContest.id)}">${escape(txt('compBack'))}</button></div>`:''}
+        ${accordion('lamp',txt('hint'),`<ol>${p.hints[ls].map(h=>`<li>${escape(h)}</li>`).join('')}</ol>`)}
+        ${accordion('warning',txt('commonMistakes'),`<ul>${p.mistakes[ls].map(m=>`<li>${escape(m)}</li>`).join('')}</ul>`)}
+        ${accordion('book',txt('reference'),`<p>${escape(p.reference[ls])}</p><p class="tiny-caption">${escape(txt('refNotice'))}</p>`)}
+        <div style="margin-top:25px;padding-top:15px;border-top:1px solid var(--line)"><div class="label-small">${escape(txt('related'))}</div><div class="skill-row">${p.skills[ls].map(s=>`<span class="tag neutral">${escape(s)}</span>`).join('')}</div></div>
+      </section>
+      <div><section class="panel panel-pad input-panel" aria-label="${escape(txt('yourWork'))}"><div class="panel-heading"><h2>${escape(txt('yourWork'))}</h2><span class="tag violet">${escape(kindLabel(p.kind))}</span></div><label for="proof-input">${escape(txt('inputHelp'))}</label><p class="input-help">${escape(txt('feedbackNotice'))}</p><textarea id="proof-input" maxlength="5000" placeholder="${escape(txt('inputPlaceholder'))}">${escape(state.drafts[p.id]||'')}</textarea>
+      <div class="field-actions"><div class="symbol-group" role="group" aria-label="Math symbols">${['∀','∃','⇒','≠','√','²'].map(s=>`<button class="symbol-btn" data-symbol="${s}" type="button" aria-label="Insert ${escape(s)}">${s}</button>`).join('')}</div><span class="count" id="char-count">${(state.drafts[p.id]||'').length} / ${MAX_CHARS}</span></div>
+      <div class="submit-row"><span class="hint-note">${escape(txt('attempts'))}: ${history.length}</span><div class="cta-row"><button class="btn btn-outline btn-small" data-clear="true">${escape(txt('clear'))}</button><button class="btn btn-primary" data-review="true">${ic('spark')} ${escape(txt('review'))}</button></div></div></section>
+      <section class="panel feedback" aria-live="polite"><div class="feedback-body"><div class="panel-heading"><h2>${ic('spark')} ${escape(txt('feedback'))}</h2><span class="label-small">${escape(txt('demo'))}</span></div>
+      ${latest?`<div class="status-line">${ic('warning')} ${escape(txt('feedbackStatus'))}</div>
+        <div class="feedback-part"><span class="key">${escape(txt('feedbackIssue'))}</span><div class="value">${escape(txt(latest.short?'shortIssue':'longIssue'))}</div></div>
+        <div class="feedback-part"><span class="key">${escape(txt('feedbackStep'))}</span><div class="value">${escape(txt('noStep'))}</div></div>
+        <div class="feedback-part"><span class="key">${escape(txt('feedbackExplanation'))}</span><div class="value">${escape(txt(latest.short?'shortExpl':'longExpl'))}</div></div>
+        <div class="feedback-part"><span class="key">${escape(txt('feedbackHint'))}</span><div class="value">${escape(p.hints[ls][0])}</div></div>
+        <div class="notice">${escape(txt('feedbackNotice'))}</div>`:
+        `<div class="feedback-empty">${ic('target')}<strong>${escape(txt('feedbackEmpty'))}</strong><p>${escape(txt('feedbackEmptyDesc'))}</p></div>`}</div></section></div></div>${footer()}</div></div>`;
+  }
+  function library(){
+    const filtered=problems.filter(p=> (state.kindFilter==='all'||p.kind===state.kindFilter) && (state.topic==='all'||p.topic===state.topic) && (state.diffFilter==='all'||p.difficulty===state.diffFilter) && (!state.search||[p.title[state.lang],p.statement[state.lang],topicLabel(p.topic)].join(' ').toLowerCase().includes(state.search.toLowerCase())));
+    return `<div class="app-page"><div class="body-padding"><div class="page-header"><div class="section-kicker">${escape(txt('sectionLibrary'))} / ${problems.length}</div><h1 class="page-title">${escape(txt('libraryTitle'))}</h1><p class="page-sub">${escape(txt('libraryDesc'))}</p></div>
+    <div class="panel panel-pad"><div class="section-box"><strong style="font-size:13px">${filtered.length} ${escape(txt('items'))}</strong><span class="tag neutral">${escape(txt('phase'))}</span></div><div class="filters"><input id="library-search" class="search" type="search" value="${escape(state.search)}" placeholder="${escape(txt('search'))}" aria-label="${escape(txt('search'))}"><select class="filter-select" id="kind-filter" aria-label="${escape(txt('taskType'))}"><option value="all">${escape(txt('allKinds'))}</option>${kinds.map(k=>`<option value="${k}" ${state.kindFilter===k?'selected':''}>${escape(kindLabel(k))}</option>`).join('')}</select><select class="filter-select" id="topic-filter" aria-label="${escape(txt('categories'))}"><option value="all">${escape(txt('allTopics'))}</option>${topics.map(k=>`<option value="${k}" ${state.topic===k?'selected':''}>${escape(topicLabel(k))}</option>`).join('')}</select><select class="filter-select" id="diff-filter" aria-label="${escape(txt('difficulty'))}"><option value="all">${escape(txt('all'))}</option>${['foundation','core','challenge'].map(d=>`<option value="${d}" ${state.diffFilter===d?'selected':''}>${escape(difficultyLabel(d))}</option>`).join('')}</select></div></div>
+      <div class="library-grid">${filtered.map(p=>`<button class="library-card" data-problem="${p.id}"><div class="meta-chips"><span class="tag ${diffClass(p.difficulty)}">${escape(difficultyLabel(p.difficulty))}</span><span class="tag neutral">${escape(kindLabel(p.kind))}</span></div><h3>${escape(p.title[state.lang])}</h3><p>${escape(p.statement[state.lang])}</p><div class="card-foot"><span>${escape(topicLabel(p.topic))}</span><span>${escape(txt('open'))} ${ic('arrow','tiny')}</span></div></button>`).join('')||`<div class="library-empty">${escape(txt('noResults'))}</div>`}</div>${footer()}</div></div>`;
+  }
+
+  function compFormatLabel(id){return txt(({choice:'compFormatChoice',mixed:'compFormatMixed',written:'compFormatWritten',integer:'compFormatInteger'})[id]);}
+  function competitionCard(c){
+    const count=c.examples.filter(id=>problems.some(p=>p.id===id)).length;
+    return `<article class="competition-card accent-${c.accent}"><div class="competition-card-top"><div class="competition-symbol" aria-hidden="true">${escape(c.symbol)}</div><span class="country-pill">${escape(txt(c.country==='ca'?'compCanada':'compUSA'))}</span></div>
+      <h3>${escape(c.name)}</h3><p class="competition-full">${escape(c.full[state.lang])}</p><p class="competition-desc">${escape(c.description[state.lang])}</p>
+      <div class="competition-labels"><span class="tag neutral">${escape(c.level[state.lang])}</span><span class="tag neutral">${escape(compFormatLabel(c.format))}</span></div>
+      <div class="competition-bottom"><span>${count} ${escape(txt('compSampleCount'))}</span><button class="competition-open" data-contest="${escape(c.id)}">${escape(txt('compExplore'))} ${ic('arrow','tiny')}</button></div></article>`;
+  }
+  function competitionHub(){
+    const filtered=contests.filter(c=>(state.compCountry==='all'||c.country===state.compCountry) && (state.compTopic==='all'||c.topics.includes(state.compTopic)) && (state.compFormat==='all'||c.format===state.compFormat) && (!state.compSearch||[c.name,c.full.en,c.full.zh,c.description.en,c.description.zh].join(' ').toLowerCase().includes(state.compSearch.toLowerCase())));
+    const countries=[['all','compAll'],['ca','compCanada'],['us','compUSA']];
+    return `<div class="app-page"><div class="body-padding competition-page">
+      <div class="competition-hero"><div class="section-kicker">${escape(txt('compEyebrow'))}</div><div class="competition-hero-body"><div><h1 class="page-title">${escape(txt('compTitle'))}</h1><p class="page-sub">${escape(txt('compSubtitle'))}</p></div><div class="competition-hero-mark" aria-hidden="true"><span>∑</span><span>△</span><span>π</span></div></div><div class="competition-metrics"><span>08 <small>${escape(txt('compCount'))}</small></span><span>CA / US</span><span>${escape(txt('compOriginal'))}</span></div></div>
+      <div class="comp-controls"><div class="comp-country-tabs" role="group" aria-label="${escape(txt('compAll'))}">${countries.map(([id,k])=>`<button class="${state.compCountry===id?'selected':''}" data-comp-country="${id}" aria-pressed="${state.compCountry===id}">${escape(txt(k))}</button>`).join('')}</div>
+        <div class="comp-filters"><label class="comp-search-wrap">${ic('search','tiny')}<input id="comp-search" type="search" value="${escape(state.compSearch)}" placeholder="${escape(txt('compSearch'))}" aria-label="${escape(txt('compSearch'))}"></label>
+          <label><span class="sr-only">${escape(txt('compTopic'))}</span><select id="comp-topic"><option value="all">${escape(txt('compTopic'))} · ${escape(txt('all'))}</option>${topics.map(t=>`<option value="${t}" ${state.compTopic===t?'selected':''}>${escape(topicLabel(t))}</option>`).join('')}</select></label>
+          <label><span class="sr-only">${escape(txt('compFormat'))}</span><select id="comp-format"><option value="all">${escape(txt('compAllFormats'))}</option>${['choice','mixed','written','integer'].map(f=>`<option value="${f}" ${state.compFormat===f?'selected':''}>${escape(compFormatLabel(f))}</option>`).join('')}</select></label>
+          <button class="comp-reset" data-comp-reset="true">${escape(txt('compClear'))}</button>
+        </div></div>
+      <div class="comp-result-head"><strong>${filtered.length} ${escape(txt('compCount'))}</strong><span>${escape(txt('compOriginal'))}</span></div>
+      <div class="competition-grid">${filtered.map(competitionCard).join('')||`<div class="comp-no-results">${ic('search')} ${escape(txt('compEmpty'))}</div>`}</div>
+      <div class="comp-disclaimer">${ic('info','tiny')}<p>${escape(txt('compNotice'))}<br>${escape(txt('compCopyright'))}</p></div>
+      ${footer()}</div></div>`;
+  }
+  function competitionDetail(){
+    const c=contests.find(c=>c.id===state.contestId)||contests[0];
+    const related=c.examples.map(id=>problems.find(p=>p.id===id)).filter(Boolean);
+    return `<div class="app-page"><div class="body-padding competition-page competition-detail"><button class="back-competition" data-page="competitions">${ic('left','tiny')} ${escape(txt('compReturn'))}</button>
+      <div class="competition-detail-header accent-${c.accent}"><div class="competition-detail-identity"><div class="competition-detail-symbol">${escape(c.symbol)}</div><div><div class="section-kicker">${escape(txt(c.country==='ca'?'compCanada':'compUSA'))} / ${escape(txt('competitions'))}</div><h1 class="page-title">${escape(c.name)}</h1><p class="competition-full">${escape(c.full[state.lang])}</p></div></div><p>${escape(c.description[state.lang])}</p>
+        <div class="competition-detail-meta"><span>${escape(txt('compOrganized'))}: ${escape(c.organizer[state.lang])}</span><span>${escape(txt('compAudience'))}: ${escape(c.level[state.lang])}</span><span>${escape(txt('compFormats'))}: ${escape(compFormatLabel(c.format))}</span></div></div>
+      <div class="competition-detail-columns"><section class="panel panel-pad"><div class="panel-heading"><h2>${ic('pen')} ${escape(txt('compPractice'))}</h2><span class="tag teal">${related.length} ${escape(txt('compSampleCount'))}</span></div><p class="section-desc">${escape(txt('compPracticeDesc'))}</p>
+        <div class="competition-exercise-list">${related.map((p,i)=>`<button class="competition-exercise" data-contest-problem="${escape(p.id)}" data-from-contest="${escape(c.id)}"><span class="exercise-index">${String(i+1).padStart(2,'0')}</span><div class="exercise-detail"><strong>${escape(p.title[state.lang])}</strong><div class="exercise-tags"><span>${escape(topicLabel(p.topic))}</span><span>·</span><span>${escape(difficultyLabel(p.difficulty))}</span><span>·</span><span>${escape(kindLabel(p.kind))}</span></div></div>${ic('arrow','tiny')}</button>`).join('')}</div></section>
+        <div class="competition-resource-column"><section class="panel panel-pad"><div class="panel-heading"><h2>${ic('book')} ${escape(txt('compArchive'))}</h2></div><p>${escape(txt('compArchiveNote'))}</p><div class="competition-outlinks"><a target="_blank" rel="noopener noreferrer" href="${escape(c.official)}">${ic('globe','tiny')} ${escape(txt('compOfficial'))} ${ic('arrow','tiny')}</a><a target="_blank" rel="noopener noreferrer" href="${escape(c.archive)}">${ic('book','tiny')} ${escape(txt('compOfficialLink'))} ${ic('arrow','tiny')}</a></div></section>
+        <section class="panel panel-pad comp-focus"><div class="panel-heading"><h2>${ic('target')} ${escape(txt('compFocus'))}</h2></div><div class="comp-focus-tags">${c.topics.map(t=>`<button class="tag neutral" data-topic="${escape(t)}">${escape(topicLabel(t))}</button>`).join('')}</div></section></div></div>
+      <div class="comp-disclaimer">${ic('info','tiny')} <p>${escape(txt('compNotice'))}</p></div>${footer()}</div></div>`;
+  }
+
+  function skillsPage(){return `<div class="app-page"><div class="body-padding"><div class="page-header"><div class="section-kicker">${escape(txt('sectionSkills'))}</div><h1 class="page-title">${escape(txt('skillTitle'))}</h1><p class="page-sub">${escape(txt('skillDesc'))}</p></div><div class="skills-grid">${[1,2,3,4].map((i)=>`<article class="skill-card"><span class="tag ${['violet','teal','amber','coral'][i-1]}">0${i}</span><h3 style="margin-top:16px">${escape(txt('skill'+i))}</h3><p>${escape(txt('skill'+i+'desc'))}</p></article>`).join('')}</div><div class="logic-demo" style="margin:30px 0"><div><h2 class="section-title">${escape(txt('logicTitle'))}</h2><p class="section-desc">${escape(txt('logicDesc'))}</p></div>${logicControl()}</div>${footer()}</div></div>`;}
+  function topicsPage(){return `<div class="app-page"><div class="body-padding"><div class="page-header"><div class="section-kicker">${escape(txt('sectionTopics'))}</div><h1 class="page-title">${escape(txt('topicsTitle'))}</h1><p class="page-sub">${escape(txt('topicsDesc'))}</p></div><div class="section-kicker">${escape(txt('selectGrade'))}</div><div class="grade-row">${Object.keys(study).map(g=>`<button class="grade-button ${state.grade===g?'selected':''}" data-grade="${g}">${escape(txt(g==='college'?'college':'grade'+g.slice(1)))}</button>`).join('')}</div><section class="grade-panel"><div class="label-small">${escape(txt('gradeTopics'))}</div><h2 style="margin-top:12px">${escape(txt(state.grade==='college'?'college':'grade'+state.grade.slice(1)))}</h2><ul>${study[state.grade][state.lang].map(s=>`<li>${escape(s)}</li>`).join('')}</ul><button class="btn btn-primary" data-page="problems" style="margin-top:24px">${escape(txt('browse'))} ${ic('arrow')}</button></section>${footer()}</div></div>`;}
+  function aboutPage(){return `<div class="app-page"><div class="body-padding"><div class="page-header"><div class="section-kicker">${escape(txt('sectionAbout'))}</div><h1 class="page-title">${escape(txt('aboutTitle'))}</h1><p class="page-sub">${escape(txt('aboutDesc'))}</p></div><div class="about-layout"><div class="panel about-panel" id="mission"><span class="label-small">${escape(txt('sectionMission'))}</span><h2 style="margin-top:15px">${escape(txt('mission'))}</h2><p>${escape(txt('missionText'))}</p><div class="mini-stat"><div class="stat-value serif">Think. Prove. Refine.</div><div class="tiny-caption" style="margin-top:8px">Olympiad Proof Clinic</div></div></div><div class="panel about-panel" id="team"><span class="label-small">${escape(txt('sectionTeam'))}</span><h2 style="margin-top:15px">${escape(txt('teamTitle'))}</h2><p>${escape(txt('teamText'))}</p></div><div class="panel about-panel"><span class="label-small">${escape(txt('sectionPrivacy'))}</span><h2 style="margin-top:15px">${escape(txt('privacy'))}</h2><p>${escape(txt('privacyText'))}</p></div><div class="panel about-panel"><span class="label-small">${escape(txt('sectionLimits'))}</span><h2 style="margin-top:15px">${escape(txt('faq'))}</h2><p>${escape(txt('faqText'))}</p></div></div>${footer()}</div></div>`;}
+  function pageContent(){return ({home,problems:library,competitions:competitionHub,competition:competitionDetail,practice,skills:skillsPage,topics:topicsPage,about:aboutPage}[state.page]||home)();}
+  function updateLogic(){
+    const forms={original:['P','Q','logicCaptionOriginal'],converse:['Q','P','logicCaptionConverse'],contrapositive:['¬Q','¬P','logicCaptionContrapositive']};
+    const [a,b,k]=forms[state.logic];const n1=document.getElementById('logic-from'),n2=document.getElementById('logic-to'),cap=document.getElementById('logic-caption');
+    if(n1){n1.textContent=a;n2.textContent=b;cap.textContent=txt(k);}
+  }
+  function render(options={}){
+    const existing=document.getElementById('main'),oldY=existing?.scrollTop||0;
+    document.documentElement.lang=state.lang==='zh'?'zh-CN':'en';
+    document.title=`Olympiad Proof Clinic · ${txt(state.page==='home'?'home':state.page)}`;
+    $app.innerHTML=`<div class="shell">${sidebar()}<div class="mobile-overlay ${state.mobileMenu?'active':''}" data-menu="close"></div><main id="main" class="main ${state.page==='home'?'home-scroll':''}">${topbar()}${pageContent()}</main></div>`;
+    updateLogic();
+    if(options.keepScroll){document.getElementById('main').scrollTop=oldY;}
+    else{document.getElementById('main').scrollTop=0;}
+  }
+  function navigate(page,opts={}){
+    state.page=page;state.mobileMenu=false;
+    if(opts.kind){state.contestContext=null;state.kind=opts.kind;const p=problems.find(x=>x.kind===opts.kind);if(p)state.problemId=p.id;}
+    render();
+  }
+  function toast(s){document.querySelector('.toast')?.remove();const t=document.createElement('div');t.className='toast';t.role='status';t.textContent=s;document.body.appendChild(t);setTimeout(()=>t.remove(),2600);}
+  function handleReview(){
+    const field=document.getElementById('proof-input');if(!field)return;
+    const text=field.value.trim();if(!text){toast(txt('emptyError'));field.focus();return;}
+    if(text.length>MAX_CHARS){toast(txt('longError'));return;}
+    const words=text.split(/\s+/).filter(Boolean).length;
+    state.drafts[state.problemId]=field.value;
+    (state.attempts[state.problemId]??=[]).push({short:words<25,length:text.length});
+    render({keepScroll:true});
+    document.querySelector('.feedback')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+    toast(txt('saved'));
+  }
+  $app.addEventListener('click',event=>{
+    const el=event.target.closest('button');if(!el)return;
+    if(el.dataset.lang){const old=state.lang;state.lang=el.dataset.lang;try{localStorage.setItem('opc_language',state.lang);}catch(_){}if(old!==state.lang)render({keepScroll:true});return;}
+    if(el.dataset.page){navigate(el.dataset.page);return;}
+    if(el.dataset.contest){state.contestId=el.dataset.contest;navigate('competition');return;}
+    if(el.dataset.contestProblem){const p=problems.find(p=>p.id===el.dataset.contestProblem);if(!p)return;state.problemId=p.id;state.kind=p.kind;state.contestContext=el.dataset.fromContest||null;navigate('practice');return;}
+    if(el.dataset.compCountry){state.compCountry=el.dataset.compCountry;render({keepScroll:true});return;}
+    if(el.dataset.compReset){state.compCountry='all';state.compTopic='all';state.compFormat='all';state.compSearch='';render({keepScroll:true});return;}
+    if(el.dataset.kind){navigate('practice',{kind:el.dataset.kind});return;}
+    if(el.dataset.topic){state.topic=el.dataset.topic;state.kindFilter='all';state.diffFilter='all';state.search='';navigate('problems');return;}
+    if(el.dataset.problem){const p=problems.find(p=>p.id===el.dataset.problem);if(!p)return;state.contestContext=null;state.problemId=p.id;state.kind=p.kind;navigate('practice');return;}
+    if(el.dataset.grade){state.grade=el.dataset.grade;navigate('topics');return;}
+    if(el.dataset.difficulty){state.diffFilter=el.dataset.difficulty;state.kindFilter='all';state.topic='all';state.search='';navigate('problems');return;}
+    if(el.dataset.about){navigate('about');requestAnimationFrame(()=>document.getElementById(el.dataset.about)?.scrollIntoView({behavior:'smooth',block:'center'}));return;}
+    if(el.dataset.menu){state.mobileMenu=el.dataset.menu==='toggle'?!state.mobileMenu:false;render({keepScroll:true});return;}
+    if(el.dataset.scroll){document.getElementById(el.dataset.scroll)?.scrollIntoView({behavior:'smooth'});return;}
+    if(el.dataset.logic){state.logic=el.dataset.logic;document.querySelectorAll('[data-logic]').forEach(b=>{b.classList.toggle('active',b.dataset.logic===state.logic);b.setAttribute('aria-pressed',String(b.dataset.logic===state.logic));});updateLogic();return;}
+    if(el.dataset.symbol){const field=document.getElementById('proof-input');if(!field)return;const start=field.selectionStart,end=field.selectionEnd;field.setRangeText(el.dataset.symbol,start,end,'end');state.drafts[state.problemId]=field.value;document.getElementById('char-count').textContent=field.value.length+' / '+MAX_CHARS;field.focus();return;}
+    if(el.dataset.clear){const field=document.getElementById('proof-input');if(!field)return;field.value='';state.drafts[state.problemId]='';document.getElementById('char-count').textContent='0 / '+MAX_CHARS;field.focus();return;}
+    if(el.dataset.review){handleReview();return;}
+  });
+  $app.addEventListener('input',event=>{
+    if(event.target.id==='proof-input'){state.drafts[state.problemId]=event.target.value;const count=document.getElementById('char-count');if(count)count.textContent=event.target.value.length+' / '+MAX_CHARS;}
+    if(event.target.id==='comp-search'){
+      const pos=event.target.selectionStart;state.compSearch=event.target.value;render({keepScroll:true});const search=document.getElementById('comp-search');search?.focus();try{search?.setSelectionRange(pos,pos);}catch(_){}
+    }
+    if(event.target.id==='library-search'){
+      const pos=event.target.selectionStart;state.search=event.target.value;render({keepScroll:true});const search=document.getElementById('library-search');search?.focus();try{search?.setSelectionRange(pos,pos);}catch(_){}
+    }
+  });
+  $app.addEventListener('change',event=>{
+    if(event.target.id==='comp-topic'){state.compTopic=event.target.value;render({keepScroll:true});}
+    if(event.target.id==='comp-format'){state.compFormat=event.target.value;render({keepScroll:true});}
+    if(event.target.id==='kind-filter'){state.kindFilter=event.target.value;render({keepScroll:true});}
+    if(event.target.id==='topic-filter'){state.topic=event.target.value;render({keepScroll:true});}
+    if(event.target.id==='diff-filter'){state.diffFilter=event.target.value;render({keepScroll:true});}
+  });
+  $app.addEventListener('pointermove',event=>{
+    const canvas=event.target.closest('#math-canvas');if(!canvas||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const svg=canvas.querySelector('svg');if(!svg)return;const r=svg.getBoundingClientRect();const x=Math.max(0,Math.min(520,(event.clientX-r.left)*520/r.width)),y=Math.max(0,Math.min(390,(event.clientY-r.top)*390/r.height));
+    const line=canvas.querySelector('#pointer-line'),dot=canvas.querySelector('#pointer-dot');if(line){line.setAttribute('x2',String(x));line.setAttribute('y2',String(y));line.setAttribute('opacity','.7');}if(dot){dot.setAttribute('cx',String(x));dot.setAttribute('cy',String(y));dot.setAttribute('opacity','.8');}
+    const node=event.target.closest('[data-mathpoint]');const tip=document.getElementById('math-tip');if(node&&tip){tip.textContent=`${node.dataset.mathpoint}  ·  ${state.lang==='en'?'Explore a relation':'探索节点关系'}`;}
+  });
+  $app.addEventListener('pointerout',event=>{
+    const canvas=event.target.closest('#math-canvas');if(!canvas)return;
+    if(event.relatedTarget&&canvas.contains(event.relatedTarget))return;
+    ['#pointer-line','#pointer-dot'].forEach(q=>canvas.querySelector(q)?.setAttribute('opacity','0'));
+    const tip=canvas.querySelector('#math-tip');if(tip)tip.textContent=txt('mathTip');
+  });
+  $app.addEventListener('focusin',event=>{if(event.target.hasAttribute('data-mathpoint')){const tip=document.getElementById('math-tip');if(tip)tip.textContent=`${event.target.dataset.mathpoint}`;}});
+  render();
+})();
+
+</script>
+</body>
+</html>
